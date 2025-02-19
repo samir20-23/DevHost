@@ -25,9 +25,7 @@ This repository contains multiple applications, including games, utility apps, a
 
 ## 📌 **Installation & Setup**  
 1️⃣ Clone the repository:  
-```bash
-git clone https://github.com/yourusername/Ultimate-App-Collection.git
-```
+ 
 2️⃣ Navigate to a project folder and follow its individual setup instructions.  
 
 ## 🛠️ **Tech Stack**  
