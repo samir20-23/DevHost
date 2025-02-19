@@ -1,0 +1,91 @@
+
+.dark {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #a0aec0;
+}
+
+.light {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f7fafc;
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+}
+
+.theme-transition {
+    transition: all 0.3s ease;
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.floating-action-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 50;
+    transition: transform 0.2s;
+}
+
+.floating-action-button:hover {
+    transform: scale(1.1);
+}
+
+
+#btnAddNewData {
+    z-index: 2;
+    position: fixed;
+    left: 97%;
+    bottom: 8px;
+    transform: translateX(-50%);
+    max-width: 38px;
+    min-width: 27px;
+    animation: btnAddNewData 1s infinite alternate;
+}
+
+@keyframes btnAddNewData {
+    0% {
+        left: 97%;
+        bottom: 8px;
+
+    }
+
+    50% {
+        left: 97.01%;
+        bottom: 5px;
+    }
+
+    100% {
+        left: 96.99%;
+        bottom: 9px;
+
+    }
+}

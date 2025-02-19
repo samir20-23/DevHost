@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevTime</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/8718/8718219.png" type="image/png">
+ <link rel="stylesheet" href="style.css">
+ <link rel="stylesheet" href="game.css">
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="header-content">
+            <h1 class="app-title">DevTime</h1>
+            <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <main class="main-timer">
+            <div class="mode-selector">
+                <button class="mode-btn active" onclick="setMode('stopwatch')">Stopwatch</button>
+                <button class="mode-btn" onclick="setMode('countdown')">Countdown</button>
+                <button class="mode-btn" onclick="setMode('interval')">Interval</button>
+            </div>
+
+            <div class="time-display">00:00:00.000</div>
+
+            <div class="controls">
+                <button class="start-btn" onclick="startTimer()">Start</button>
+                <button class="stop-btn" onclick="stopTimer()">Stop</button>
+                <button class="lap-btn" onclick="recordLap()">Lap</button>
+                <button class="reset-btn" onclick="resetTimer()">Reset</button>
+                <button class="save-btn" onclick="saveSession()">Save</button>
+            </div>
+
+            <div class="stats-container">
+                <h2 class="section-title">Statistics</h2>
+                <div id="stats">
+                    <div>Best Lap: <span id="best-lap">--:--:--</span></div>
+                    <div>Average Lap: <span id="avg-lap">--:--:--</span></div>
+                    <div>Total Laps: <span id="total-laps">0</span></div>
+                </div>
+            </div>
+
+            <div class="laps-container">
+                <h2 class="section-title">Lap Times</h2>
+                <div id="laps-list"></div>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="saved-sessions">
+                <h2 class="section-title">Saved Sessions</h2>
+                <div id="sessions-list"></div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Add Games Section -->
+    <div class="games-container">
+        <h2 class="section-title">Mini Games</h2>
+        <div class="games-grid">
+            <div class="game-card" onclick="startGame('quicktap')">
+                <div class="game-title">Quick Tap</div>
+                <div class="game-description">Tap targets as quickly as possible within 30 seconds</div>
+            </div>
+            <div class="game-card" onclick="startGame('memory')">
+                <div class="game-title">Memory Timer</div>
+                <div class="game-description">Remember and repeat color sequences</div>
+            </div>
+            <div class="game-card" onclick="startGame('speedmath')">
+                <div class="game-title">Speed Math</div>
+                <div class="game-description">Solve math problems against the clock</div>
+            </div>
+            <div class="game-card" onclick="startGame('reflex')">
+                <div class="game-title">Reflex Race</div>
+                <div class="game-description">Test your reaction time</div>
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <!-- Game Overlay -->
+    <div class="game-overlay">
+        <div class="game-content">
+            <button class="close-game" onclick="closeGame()">×</button>
+            <div class="game-stats"></div>
+            <div id="game-area"></div>
+            <div class="leaderboard"></div>
+        </div>
+    </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <p>
+      Contact: <a href="mailto:aouladamarsamir@gmial.com">aouladamarsamir@gmial.com</a>
+    </p>
+    <p>
+      <a href="https://github.com/samir20-23/" target="_blank">GitHub</a> |
+      <a href="https://www.instagram.com/samir_devgenius/" target="_blank">Instagram</a>
+    </p>
+  </footer>
+    <script src="script.js"></script>
+    <script src="game.js"></script>
+</body>
+
+</html>

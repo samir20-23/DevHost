@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>samir aoulad amar - Link in Bio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+ 
+    <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/144660881?v=4">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Light Theme Colors */
+            --bg-light: #ffffff;
+            --text-light: #1a1a1a;
+            --card-light: #f5f5f5;
+            --hover-light: #e0e0e0;
+            --accent-light: #531176;
+            --header-light: rgba(255, 255, 255, 0.95);
+            
+            /* Dark Theme Colors */
+            --bg-dark: #1a1a1a;
+            --text-dark: #ffffff;
+            --card-dark: #2d2d2d;
+            --hover-dark: #3d3d3d;
+            --accent-dark: #5e1377;
+            --header-dark: rgba(26, 26, 26, 0.95);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        body.dark-mode {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background-color: var(--header-light);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode .header {
+            background-color: var(--header-dark);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .profile-image {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-light);
+        }
+
+        .dark-mode .profile-image {
+            border-color: var(--accent-dark);
+        }
+
+        .profile-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            font-size: 1.5rem;
+            opacity: 0;
+            color: currentColor;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            opacity: 0;
+        }
+
+        .bio-section {
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0;
+        }
+
+        .bio-text {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 1rem auto;
+        }
+
+        .dark-mode .bio-text {
+            color: var(--text-dark);
+        }
+
+        .categories {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .category {
+            background-color: var(--card-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .category {
+            background-color: var(--card-dark);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dark-mode .category-title {
+            border-bottom-color: var(--accent-dark);
+        }
+
+        .category-icon {
+            opacity: 0.8;
+        }
+
+        .links-list {
+            list-style: none;
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .link-item {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .link {
+            color: currentColor;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.03);
+            transform: translateX(0);
+            transition: all 0.2s ease;
+        }
+
+        .dark-mode .link {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        .link:hover {
+            background-color: var(--hover-light);
+            transform: translateX(5px);
+        }
+
+        .dark-mode .link:hover {
+            background-color: var(--hover-dark);
+        }
+
+        .link-icon {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .footer {
+            margin-top: 4rem;
+            text-align: center;
+            padding: 2rem;
+            opacity: 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-icon {
+            color: currentColor;
+            font-size: 1.5rem;
+            opacity: 0.8;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .social-icon:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .profile-name {
+                font-size: 1rem;
+            }
+
+            .bio-text {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-image {
+                width: 35px;
+                height: 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="profile-section">
+            <img src="https://avatars.githubusercontent.com/u/144660881?v=4" alt="Profile Picture" class="profile-image">
+            <h1 class="profile-name">samir aoulad amar</h1>
+        </div>
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+        </button>
+    </header>
+
+    <div class="container">
+        <section class="bio-section">
+            <p class="bio-text">
+                Digital creator, web developer, and tech enthusiast. Sharing knowledge and creating content about web development, design, and technology.
+            </p>
+        </section>
+
+        <main class="categories">
+            <div class="category">
+                <h2 class="category-title">
+                    <i class="fas fa-hashtag category-icon"></i>
+                    Social Media
+                </h2>
+                <ul class="links-list">
+                    <li class="link-item">
+                        <a href="#" class="link">
+                            <i class="fab fa-twitter link-icon"></i>
+                            Twitter
+                        </a>
+                    </li>
+                    <li class="link-item">
+                        <a href="#" class="link">
+                            <i class="fab fa-instagram link-icon"></i>
+                            Instagram
+                        </a>
+                    </li>
+                    <li class="link-item">
+                        <a href="#" class="link">
+                            <i class="fab fa-linkedin link-icon"></i>
+                            LinkedIn
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="category">
+                <h2 class="category-title">
+                    <i class="fas fa-code category-icon"></i>
+                    Projects & Portfolio
+                </h2>
+                <ul class="links-list">
+                    <li class="link-item">
+                        <a href="#" class="link">
+                            <i class="fab fa-github link-icon"></i>
+                            GitHub Profile
+                        </a>
+                    </li>
+                    <li class="link-item">
+                        <a href="#" class="link">
+                            <i class="fas fa-laptop-code link-icon"></i>
+                            Portfolio Website
+                        </a>
+                    </li>
+                    <li class="link-item">
+                        <a href="#" class="link">
+                            <i class="fas fa-briefcase link-icon"></i>
+                            Latest Project
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="category">
+                <h2 class="category-title">
+                    <i class="fas fa-graduation-cap category-icon"></i>
+                    Tutorials & Resources
+                </h2>
+                <ul class="links-list">
+                    <li class="link-item">
+                        <a href="#" class="link">
+                            <i class="fab fa-youtube link-icon"></i>
+                            YouTube Channel
+                        </a>
+                    </li>
+                    <li class="link-item">
+                        <a href="#" class="link">
+                            <i class="fas fa-book link-icon"></i>
+                            Dev Blog
+                        </a>
+                    </li>
+                    <li class="link-item">
+                        <a href="#" class="link">
+                            <i class="fas fa-chalkboard-teacher link-icon"></i>
+                            Online Course
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="social-links">
+                <a href="#" class="social-icon">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+            <p class="copyright">© 2024 samir aoulad amar. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize GSAP animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Main container fade in
+            gsap.to('.container', {
+                opacity: 1,
+                duration: 0.5
+            });
+
+            // Theme toggle fade in
+            gsap.to('.theme-toggle', {
+                opacity: 1,
+                duration: 0.5
+            });
+
+            // Bio section fade in
+            gsap.to('.bio-section', {
+                opacity: 1,
+                duration: 0.5,
+                delay: 0.2
+            });
+
+            // Categories stagger animation
+            gsap.to('.category', {
+                opacity: 1,
+                y: 0,
+                duration: 0.5,
+                stagger: 0.1,
+                delay: 0.3
+            });
+
+            // Links stagger animation
+            gsap.to('.link-item', {
+                opacity: 1,
+                x: 0,
+                duration: 0.3,
+                stagger: 0.05,
+                delay: 0.5
+            });
+
+            // Footer fade in
+            gsap.to('.footer', {
+                opacity: 1,
+                duration: 0.5,
+                delay: 0.8
+            });
+        });
+
+        // Dark mode toggle functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        const body = document.body;
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            // Update icon
+            if (body.classList.contains('dark-mode')) {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+            
+            // Save theme preference
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            
+            // Animate theme toggle
+            gsap.to(themeToggle, {
+                rotate: 360,
+                duration: 0.5
+            });
+        });
+    </script>
+</body>
+</html>
