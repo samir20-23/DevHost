@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Translation Dictionary</title>
+
+    <!-- Add PNG image as favicon -->
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3898/3898082.png" type="image/png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+
+    <style>
+        .dark {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+        }
+
+        .light {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7fafc;
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+        }
+
+        .theme-transition {
+            transition: all 0.3s ease;
+        }
+
+        .slide-in {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .floating-action-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 50;
+            transition: transform 0.2s;
+        }
+
+        .floating-action-button:hover {
+            transform: scale(1.1);
+        }
+
+
+        #btnAddNewData {
+            z-index: 2;
+            position: fixed;
+            left: 97%;
+            bottom: 8px;
+            transform: translateX(-50%);
+            max-width: 38px;
+            min-width: 27px;
+            animation: btnAddNewData 1s infinite alternate;
+        }
+
+        @keyframes btnAddNewData {
+            0% {
+                left: 97%;
+                bottom: 8px;
+
+            }
+
+            50% {
+                left: 97.01%;
+                bottom: 5px;
+            }
+
+            100% {
+                left: 96.99%;
+                bottom: 9px;
+
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-gray-100 font-[Inter] theme-transition" id="mainBody">
+    <!-- Navigation -->
+    <nav class="bg-gray-800 border-b border-gray-700 theme-transition">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <h1 class="text-xl font-bold text-indigo-400">
+                            <i class="fas fa-language mr-2"></i>WordFlow
+                        </h1>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="#"
+                            class="border-indigo-500 text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            <i class="fas fa-table mr-2"></i>Table words
+                        </a>
+                        <a href="#" onclick="toggleFavorites()"
+                            class="border-transparent text-gray-300 hover:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            <i class="fas fa-star mr-2"></i>Favorites
+                        </a>
+                        <a href="#" onclick="showFlashcards()"
+                            class="border-transparent text-gray-300 hover:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            <i class="fas fa-cards mr-2"></i>Flashcards
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <!-- Theme Toggle -->
+                    <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-700">
+                        <i class="fas fa-moon text-gray-300 hover:text-white"></i>
+                    </button>
+
+                    <!-- Import/Export -->
+                    <div class="relative">
+                        <button onclick="toggleImportExportMenu()" class="p-2 rounded-full hover:bg-gray-700">
+                            <i class="fas fa-file-import text-gray-300 hover:text-white"></i>
+                        </button>
+                        <div id="importExportMenu"
+                            class="hidden absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-gray-700 ring-1 ring-black ring-opacity-5">
+                            <div class="py-1">
+                                <a href="#" onclick="exportWords()"
+                                    class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-600">
+                                    <i class="fas fa-file-export mr-2"></i>Export Words
+                                </a>
+                                <label class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-600 cursor-pointer">
+                                    <i class="fas fa-file-import mr-2"></i>Import Words
+                                    <input type="file" class="hidden" accept=".json,.csv" onchange="importWords(event)">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Daily Challenge -->
+                    <button onclick="showDailyChallenge()" class="p-2 rounded-full hover:bg-gray-700">
+                        <i class="fas fa-trophy text-gray-300 hover:text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="py-10">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <!-- Filters -->
+            <div class="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Category</label>
+                    <select id="categoryFilter"
+                        class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                        <option value="">All Categories</option>
+                        <option value="business">Business</option>
+                        <option value="travel">Travel</option>
+                        <option value="medical">Medical</option>
+                        <option value="technology">Technology</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Language</label>
+                    <select id="languageFilter"
+                        class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                        <option value="">All Languages</option>
+                        <option value="english<->arabic">English ↔ Arabic</option>
+                        <option value="english<->french">English ↔ French</option>
+                        <option value="english<->spanish">English ↔ Spanish</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Sort By</label>
+                    <select id="sortFilter"
+                        class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="alphabetical">Alphabetical</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Search Bar with Voice Input -->
+            <div class="mb-6 relative">
+                <input type="text" id="searchInput" placeholder="Search words..."
+                    class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent pl-10">
+                <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                <button onclick="startVoiceRecognition()" class="absolute right-3 top-2 text-gray-400 hover:text-white">
+                    <i class="fas fa-microphone"></i>
+                </button>
+            </div>
+
+            <!-- Words Table -->
+            <div class="bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-6 animate__animated animate__fadeIn">
+                <div class="p-6">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-700">
+                            <thead>
+                                <tr>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                                        Word</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                                        Translation</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                                        Category</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                                        Language Pair</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                                        Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="wordsTableBody" class="divide-y divide-gray-700">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Tracker -->
+            <div class="bg-gray-800 rounded-lg p-6 mb-6 animate__animated animate__fadeIn">
+                <h3 class="text-lg font-medium mb-4">Your Progress</h3>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="bg-gray-700 rounded-lg p-4 text-center">
+                        <div class="text-2xl font-bold text-indigo-400" id="totalWords">0</div>
+                        <div class="text-sm text-gray-400">Total Words</div>
+                    </div>
+                    <div class="bg-gray-700 rounded-lg p-4 text-center">
+                        <div class="text-2xl font-bold text-indigo-400" id="learningStreak">0</div>
+                        <div class="text-sm text-gray-400">Day Streak</div>
+                    </div>
+                    <div class="bg-gray-700 rounded-lg p-4 text-center">
+                        <div class="text-2xl font-bold text-indigo-400" id="masteredWords">0</div>
+                        <div class="text-sm text-gray-400">Mastered Words</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <!-- Floating Action Button -->
+    <button onclick="newWord()"
+        class="floating-action-button bg-indigo-500 hover:bg-indigo-500 text-white rounded-full p-0 shadow-lg"
+        id="btnAddNewData">
+        <i class="fa-solid fa-paper-plane"></i> <!-- Icon for the first button -->
+    </button>
+
+
+
+
+    <hr>
+    <br>
+    <button onclick="showAddModal()"
+        class="floating-action-button bg-indigo-600 hover:bg-indigo-700 text-white rounded-full p-4 shadow-lg">
+        <i class="fas fa-plus text-xl"></i>
+    </button>
+
+    <!-- Add Word Modal -->
+    <div id="addWordModal"
+        class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 overflow-y-auto h-full w-full animate__animated animate__fadeIn">
+        <div
+            class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-gray-800 animate__animated animate__slideInUp">
+            <div class="mt-3">
+                <h3 class="text-lg leading-6 font-medium text-gray-100">Add New Word</h3>
+                <form id="addWordForm" class="mt-4" onsubmit="submitForm(event)">
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-300">Word</label>
+                        <div class="relative">
+                            <input type="text" name="word" id="word"
+                                class="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            <button type="button" onclick="speakWord(this)"
+                                class="absolute right-2 top-3 text-gray-400 hover:text-white">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-300">Translation</label>
+                        <input type="text" name="translation" id="translation"
+                            class="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-300">Category</label>
+                        <select name="category" required
+                            class="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            <option value="business">Business</option>
+                            <option value="travel">Travel</option>
+                            <option value="medical">Medical</option>
+                            <option value="technology">Technology</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-300">Example Sentence</label>
+                        <textarea name="example" rows="2"
+                            class="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-300">Language Pair</label>
+                        <select name="language" required
+                            class="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            <option value="arabic<->english"> Arabic ↔ English </option>
+                            <option value="english<->french">English ↔ French</option>
+                            <option value="english<->spanish">English ↔ Spanish</option>
+                        </select>
+                    </div>
+
+                    <div class="flex justify-end mt-6">
+                        <button type="button" onclick="hideAddModal()"
+                            class="mr-3 px-4 py-2 bg-gray-700 text-gray-300 rounded-md hover:bg-gray-600 focus:outline-none">
+                            Cancel
+                        </button>
+                        <button type="submit"
+                            class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Save
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Flashcard Modal -->
+    <div id="flashcardModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 overflow-y-auto h-full w-full">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-gray-800">
+            <div class="mt-3">
+                <h3 class="text-lg leading-6 font-medium text-gray-100 mb-4">Flashcard Practice</h3>
+                <div id="flashcard"
+                    class="bg-gray-700 p-6 rounded-lg text-center cursor-pointer min-h-[200px] flex items-center justify-center">
+                    <div id="flashcardContent" class="text-xl"></div>
+                </div>
+                <div class="flex justify-between mt-6">
+                    <button onclick="previousCard()"
+                        class="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700">
+                        <i class="fas fa-arrow-left mr-2"></i>Previous
+                    </button>
+                    <button onclick="flipCard()"
+                        class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+                        <i class="fas fa-sync-alt mr-2"></i>Flip
+                    </button>
+                    <button onclick="nextCard()" class="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700">
+                        Next<i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+                <div class="flex justify-end mt-4">
+                    <button onclick="hideFlashcardModal()" class="text-gray-400 hover:text-white">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Daily Challenge Modal -->
+    <div id="dailyChallengeModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 overflow-y-auto h-full w-full">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-gray-800">
+            <div class="mt-3">
+                <h3 class="text-lg leading-6 font-medium text-gray-100 mb-4">Daily Word Challenge</h3>
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <div id="dailyWord" class="text-2xl font-bold text-center mb-4"></div>
+                    <div id="dailyDefinition" class="text-gray-300 mb-4"></div>
+                    <div id="dailyExample" class="text-gray-400 italic"></div>
+                </div>
+                <div class="flex justify-between mt-6">
+                    <button onclick="markLearned()"
+                        class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">
+                        <i class="fas fa-check mr-2"></i>Mark as Learned
+                    </button>
+                    <button onclick="hideDailyChallengeModal()"
+                        class="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700">
+                        Later
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification"
+        class="hidden fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg animate__animated animate__fadeInUp">
+    </div>
+    <script>
+        // Sample data for words
+        let words = [
+            // General
+            { word: "Hello", translation: "مرحبًا", category: "general", language: "english<->arabic", example: "Hello, how are you?", isFavorite: false, isMastered: false },
+            { word: "Thank you", translation: "شكرًا", category: "general", language: "english<->arabic", example: "Thank you for your help.", isFavorite: false, isMastered: false },
+            { word: "Goodbye", translation: "وداعًا", category: "general", language: "english<->arabic", example: "Goodbye, see you later.", isFavorite: false, isMastered: false },
+            { word: "Please", translation: "من فضلك", category: "general", language: "english<->arabic", example: "Please pass me the salt.", isFavorite: false, isMastered: false },
+            { word: "Sorry", translation: "آسف", category: "general", language: "english<->arabic", example: "I am sorry for being late.", isFavorite: false, isMastered: false },
+
+            // Business
+            { word: "Profit", translation: "ربح", category: "business", language: "english<->arabic", example: "The company made a high profit this year.", isFavorite: false, isMastered: false },
+            { word: "Meeting", translation: "اجتماع", category: "business", language: "english<->arabic", example: "We have a meeting at 10 AM.", isFavorite: false, isMastered: false },
+            { word: "Contract", translation: "عقد", category: "business", language: "english<->arabic", example: "The contract is valid for two years.", isFavorite: false, isMastered: false },
+
+            // Technology
+            { word: "Internet", translation: "الإنترنت", category: "technology", language: "english<->arabic", example: "The internet connects people worldwide.", isFavorite: false, isMastered: false },
+            { word: "Software", translation: "البرمجيات", category: "technology", language: "english<->arabic", example: "This software helps manage accounts.", isFavorite: false, isMastered: false },
+            { word: "Hardware", translation: "الأجهزة", category: "technology", language: "english<->arabic", example: "The computer hardware includes the processor and memory.", isFavorite: false, isMastered: false },
+
+            // Science
+            { word: "Gravity", translation: "الجاذبية", category: "science", language: "english<->arabic", example: "Gravity keeps us on the ground.", isFavorite: false, isMastered: false },
+            { word: "Atom", translation: "ذرة", category: "science", language: "english<->arabic", example: "An atom is the smallest unit of matter.", isFavorite: false, isMastered: false },
+            { word: "Experiment", translation: "تجربة", category: "science", language: "english<->arabic", example: "The scientist conducted an experiment.", isFavorite: false, isMastered: false },
+
+            // Travel
+            { word: "Airport", translation: "مطار", category: "travel", language: "english<->arabic", example: "The flight departs from the airport.", isFavorite: false, isMastered: false },
+            { word: "Hotel", translation: "فندق", category: "travel", language: "english<->arabic", example: "We booked a hotel for the night.", isFavorite: false, isMastered: false },
+            { word: "Passport", translation: "جواز سفر", category: "travel", language: "english<->arabic", example: "You need a passport to travel abroad.", isFavorite: false, isMastered: false },
+
+            // Health
+            { word: "Doctor", translation: "طبيب", category: "health", language: "english<->arabic", example: "The doctor checked my health.", isFavorite: false, isMastered: false },
+            { word: "Medicine", translation: "دواء", category: "health", language: "english<->arabic", example: "You need to take your medicine.", isFavorite: false, isMastered: false },
+            { word: "Exercise", translation: "تمرين", category: "health", language: "english<->arabic", example: "Exercise is good for the heart.", isFavorite: false, isMastered: false },
+
+            // Emotions
+            { word: "Happy", translation: "سعيد", category: "emotions", language: "english<->arabic", example: "I feel happy today.", isFavorite: false, isMastered: false },
+            { word: "Angry", translation: "غاضب", category: "emotions", language: "english<->arabic", example: "He was angry about the mistake.", isFavorite: false, isMastered: false },
+            { word: "Sad", translation: "حزين", category: "emotions", language: "english<->arabic", example: "She felt sad after the news.", isFavorite: false, isMastered: false }
+        ];
+
+        // DOM Elements
+        const mainBody = document.getElementById('mainBody');
+        const wordsTableBody = document.getElementById('wordsTableBody');
+        const totalWords = document.getElementById('totalWords');
+        const learningStreak = document.getElementById('learningStreak');
+        const masteredWords = document.getElementById('masteredWords');
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const languageFilter = document.getElementById('languageFilter');
+        const sortFilter = document.getElementById('sortFilter');
+        const addWordModal = document.getElementById('addWordModal');
+        const flashcardModal = document.getElementById('flashcardModal');
+        const dailyChallengeModal = document.getElementById('dailyChallengeModal');
+        const notification = document.getElementById('notification');
+
+        // Theme Management
+        function toggleTheme() {
+            if (mainBody.classList.contains('dark')) {
+                mainBody.classList.remove('dark');
+                mainBody.classList.add('light');
+            } else {
+                mainBody.classList.remove('light');
+                mainBody.classList.add('dark');
+            }
+        }
+
+        // Toggle Import/Export Menu
+        function toggleImportExportMenu() {
+            const menu = document.getElementById('importExportMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Export Words
+        function exportWords() {
+            const dataStr = JSON.stringify(words);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'words.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            showNotification('Words exported successfully!','war_livl_0','war_livl_0');
+        }
+
+        // Import Words
+        function importWords(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const content = e.target.result;
+                    words = JSON.parse(content);
+                    renderWordsTable();
+                    showNotification('Words imported successfully!','war_livl_0');
+                };
+                reader.readAsText(file);
+            }
+        }
+
+        // Show Add Word Modal
+        function showAddModal() {
+            // Reset the form fields
+            const addWordForm = document.getElementById('addWordForm');
+            addWordForm.reset();
+
+            // Remove any previous animation classes
+            addWordModal.classList.remove('animate__fadeIn', 'animate__slideInUp');
+
+            // Show the modal
+            addWordModal.classList.remove('hidden');
+
+            // Add animation classes for a smooth appearance
+            addWordModal.classList.add('animate__animated', 'animate__fadeIn');
+            addWordModal.querySelector('.animate__slideInUp').classList.add('animate__animated', 'animate__slideInUp');
+
+            // Focus on the first input field for better UX
+            const firstInput = addWordForm.querySelector('input[name="word"]');
+            firstInput.focus();
+
+            // Center the modal on the screen
+            centerModal(addWordModal);
+        }
+
+        // Helper function to center the modal
+        function centerModal(modal) {
+            const modalContent = modal.querySelector('.animate__slideInUp');
+            const windowHeight = window.innerHeight;
+            const modalHeight = modalContent.offsetHeight;
+
+            // Calculate the top margin to center the modal
+            const topMargin = (windowHeight - modalHeight) / 2;
+            modalContent.style.marginTop = `${Math.max(topMargin, 20)}px`; // Ensure it's at least 20px from the top
+        }
+
+        // Hide Add Word Modal
+        function hideAddModal() {
+            // Add animation classes for a smooth exit
+            addWordModal.classList.add('animate__animated', 'animate__fadeOut');
+            addWordModal.querySelector('.animate__slideInUp').classList.add('animate__animated', 'animate__slideOutDown');
+
+            // Hide the modal after the animation ends
+            setTimeout(() => {
+                addWordModal.classList.add('hidden');
+                addWordModal.classList.remove('animate__fadeOut');
+                addWordModal.querySelector('.animate__slideInUp').classList.remove('animate__slideOutDown');
+            }, 300); // Match the duration of the animation
+        }
+
+        // Hide Add Word Modal
+        function hideAddModal() {
+            addWordModal.classList.add('hidden');
+        }
+
+        // Modified Add New Word with Local Storage
+        document.getElementById('addWordForm').addEventListener('submit', function (e) {
+            let wordInput = document.getElementById('word');
+            let translation = document.getElementById('translation');
+            if (wordInput.value !== "" && translation.value !== "") {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+                const newWord = {
+                    word: formData.get('word'),
+                    translation: formData.get('translation'),
+                    category: formData.get('category'),
+                    language: formData.get('language'),
+                    example: formData.get('example'),
+                    isFavorite: false,
+                    isMastered: false,
+                    dateAdded: new Date().toISOString()
+                };
+                words.push(newWord);
+                saveToLocalStorage();
+                renderWordsTable();
+                hideAddModal();
+                showNotification('Word added successfully!', 'war_livl_0');
+                e.target.reset();
+                console.log("\\\\\\\\\\\\\\\\\\\\\#" + wordInput.value + "#\\\\\\\\\\\\\\\\\\\\\\#" + translation.value + "#\\\\\\\\\\\\\\\\\\\\\\#");
+
+            } else if (wordInput.value == "" && translation.value !== "") {
+
+                showNotification('Please enter a word to translate', 'war_livl_1');
+            } if (translation.value == "" && wordInput.value !== "") {
+                showNotification('Please enter a translate for word', 'war_livl_2');
+            }
+        });
+
+        // Render Words Table
+        function renderWordsTable() {
+            wordsTableBody.innerHTML = '';
+            words.forEach((word, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+            <td class="px-6 py-4 whitespace-nowrap">${word.word}</td>
+            <td class="px-6 py-4 whitespace-nowrap">${word.translation}</td>
+            <td class="px-6 py-4 whitespace-nowrap">${word.category}</td>
+            <td class="px-6 py-4 whitespace-nowrap">${word.language}</td>
+            <td class="px-6 py-4 whitespace-nowrap">
+                <button onclick="toggleFavorite(${index})" class="text-yellow-400 hover:text-yellow-500">
+                    <i class="fas ${word.isFavorite ? 'fa-star' : 'fa-star-o'}"></i>
+                </button>
+                <button onclick="deleteWord(${index})" class="text-red-400 hover:text-red-500 ml-2">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </td>
+        `;
+                wordsTableBody.appendChild(row);
+            });
+            updateProgress();
+        }
+
+        // Modified Toggle Favorite with Local Storage
+        function toggleFavorite(index) {
+            words[index].isFavorite = !words[index].isFavorite;
+            saveToLocalStorage();
+            renderWordsTable();
+        }
+        // Modified Delete Word with Local Storage
+        function deleteWord(index) {
+            words.splice(index, 1);
+            saveToLocalStorage();
+            renderWordsTable();
+            showNotification('Word deleted successfully!','war_livl_0');
+        }
+
+        // Update Progress
+        function updateProgress() {
+            totalWords.textContent = words.length;
+            learningStreak.textContent = 0; // Placeholder for streak logic
+            masteredWords.textContent = words.filter(word => word.isMastered).length;
+        }
+
+        // Show Notification
+        function showNotification(message, livl) {
+            notification.textContent = message;
+            notification.classList.remove('hidden');
+
+            if (livl == 'war_livl_1') {
+                notification.style.backgroundColor = "#fd7d53";
+                setTimeout(() => {
+                    notification.classList.add('hidden');
+                }, 4000); 
+
+            } else if (livl == 'war_livl_2') {
+                setTimeout(() => {
+                    notification.classList.add('hidden');
+                },2000);
+                notification.style.backgroundColor = "#9bd100";
+
+            } else if (livl == '' || livl == undefined || livl == null || livl == 'war_livl_0') {
+                setTimeout(() => {
+                    notification.classList.add('hidden');
+                }, 3000);
+            }
+        }
+
+        // Flashcard Logic
+        let currentCardIndex = 0;
+        let isFlipped = false;
+
+        function showFlashcards() {
+            flashcardModal.classList.remove('hidden');
+            showCard(currentCardIndex);
+        }
+
+        function hideFlashcardModal() {
+            flashcardModal.classList.add('hidden');
+        }
+
+        function showCard(index) {
+            const card = words[index];
+            const flashcardContent = document.getElementById('flashcardContent');
+            flashcardContent.textContent = isFlipped ? card.translation : card.word;
+        }
+
+        function flipCard() {
+            isFlipped = !isFlipped;
+            showCard(currentCardIndex);
+        }
+
+        function nextCard() {
+            currentCardIndex = (currentCardIndex + 1) % words.length;
+            isFlipped = false;
+            showCard(currentCardIndex);
+        }
+
+        function previousCard() {
+            currentCardIndex = (currentCardIndex - 1 + words.length) % words.length;
+            isFlipped = false;
+            showCard(currentCardIndex);
+        }
+
+        // Daily Challenge Logic
+        function showDailyChallenge() {
+            dailyChallengeModal.classList.remove('hidden');
+            const randomWord = words[Math.floor(Math.random() * words.length)];
+            document.getElementById('dailyWord').textContent = randomWord.word;
+            document.getElementById('dailyDefinition').textContent = randomWord.translation;
+            document.getElementById('dailyExample').textContent = `Example: ${randomWord.example}`;
+        }
+
+        function hideDailyChallengeModal() {
+            dailyChallengeModal.classList.add('hidden');
+        }
+
+        function markLearned() {
+            const word = document.getElementById('dailyWord').textContent;
+            const wordIndex = words.findIndex(w => w.word === word);
+            if (wordIndex !== -1) {
+                words[wordIndex].isMastered = true;
+                updateProgress();
+                showNotification('Word marked as learned!','war_livl_0');
+            }
+            hideDailyChallengeModal();
+        }
+
+        // Voice Recognition
+        function startVoiceRecognition() {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-US';
+            recognition.onresult = function (event) {
+                const transcript = event.results[0][0].transcript;
+                searchInput.value = transcript;
+                filterWords();
+            };
+            recognition.start();
+        }
+
+        // Modified filter function to work with local storage
+        function filterWords() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const category = categoryFilter.value;
+            const language = languageFilter.value;
+            const sort = sortFilter.value;
+
+            let filteredWords = words.filter(word => {
+                return (word.word.toLowerCase().includes(searchTerm) ||
+                    word.translation.toLowerCase().includes(searchTerm)) &&
+                    (category === '' || word.category === category) &&
+                    (language === '' || word.language === language);
+            });
+
+            // Apply sorting
+            switch (sort) {
+                case 'newest':
+                    filteredWords.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+                    break;
+                case 'alphabetical':
+                    filteredWords.sort((a, b) => a.word.localeCompare(b.word));
+                    break;
+            }
+
+            renderFilteredWords(filteredWords);
+        }
+
+        function renderFilteredWords(filteredWords) {
+            wordsTableBody.innerHTML = '';
+            filteredWords.forEach((word, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+            <td class="px-6 py-4 whitespace-nowrap">${word.word}</td>
+            <td class="px-6 py-4 whitespace-nowrap">${word.translation}</td>
+            <td class="px-6 py-4 whitespace-nowrap">${word.category}</td>
+            <td class="px-6 py-4 whitespace-nowrap">${word.language}</td>
+            <td class="px-6 py-4 whitespace-nowrap">
+                <button onclick="toggleFavorite(${index})" class="text-yellow-400 hover:text-yellow-500">
+                    <i class="fas ${word.isFavorite ? 'fa-star' : 'fa-star-o'}"></i>
+                </button>
+                <button onclick="deleteWord(${index})" class="text-red-400 hover:text-red-500 ml-2">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </td>
+        `;
+                wordsTableBody.appendChild(row);
+            });
+        }
+
+        // Event Listeners
+        searchInput.addEventListener('input', filterWords);
+        categoryFilter.addEventListener('change', filterWords);
+        languageFilter.addEventListener('change', filterWords);
+        sortFilter.addEventListener('change', filterWords);
+
+        // Initial Render
+        renderWordsTable();
+        //speack
+
+        function speakWord(button) {
+            // Get the input field associated with the button
+            const inputField = button.previousElementSibling;
+
+            // Get the word from the input field
+            const word = inputField.value.trim();
+
+            // Check if the word is not empty
+            if (word === "") {
+                alert("Please enter a word to speak.");
+                return;
+            }
+
+            // Check if the browser supports the Web Speech API
+            if ('speechSynthesis' in window) {
+                // Create a new SpeechSynthesisUtterance object
+                const utterance = new SpeechSynthesisUtterance(word);
+
+                // Get the language pair selected by the user
+                const languagePair = document.querySelector('select[name="language"]').value;
+
+                // Set the language based on the selected language pair
+                switch (languagePair) {
+                    case "english<->arabic":
+                        utterance.lang = "ar-SA"; // Arabic (Saudi Arabia)
+                        break;
+                    case "english<->french":
+                        utterance.lang = "fr-FR"; // French (France)
+                        break;
+                    case "english<->spanish":
+                        utterance.lang = "es-ES"; // Spanish (Spain)
+                        break;
+                    default:
+                        utterance.lang = "en-US"; // Default to English (US)
+                        break;
+                }
+
+                // Get all available voices
+                const voices = speechSynthesis.getVoices();
+
+                // Try to find a voice that matches the selected language
+                const selectedVoice = voices.find(voice => voice.lang === utterance.lang);
+                if (selectedVoice) {
+                    utterance.voice = selectedVoice; // Use the matching voice
+                } else {
+                    console.warn("No matching voice found for the selected language. Using default voice.");
+                }
+
+                // Set the pitch, rate, and volume
+                utterance.pitch = 1; // Range: 0 to 2
+                utterance.rate = 1; // Speed: 0.1 to 10
+                utterance.volume = 1; // Range: 0 to 1
+
+                // Speak the word
+                speechSynthesis.speak(utterance);
+            } else {
+                alert("Your browser does not support the Web Speech API.");
+            }
+        }
+
+        function submitForm(event) {
+            event.preventDefault();  // Prevent the default form submission
+
+            // Here, you can handle form submission, e.g., with an AJAX request or by submitting the form data
+            const formData = new FormData(document.getElementById('addWordForm'));
+
+            // Log or send the data
+            console.log(Object.fromEntries(formData.entries()));
+
+            // Example: Submit via AJAX (use your preferred method)
+
+        }
+        // AIzaSyBrQy3eKFbcn70c06R2CX1fQk-YAAe8TKg
+        // + + +
+        // + + +
+        // + + +
+        document.getElementById('word').addEventListener('input', autoTranslate);
+
+        async function autoTranslate() {
+            const wordInput = document.getElementById('word');
+            const translationInput = document.querySelector('input[name="translation"]');
+            const languageSelect = document.querySelector('select[name="language"]');
+            const word = wordInput.value.trim();
+
+            if (!word) {
+                showNotification('Please enter a word to translate', 'war_livl_2');
+                return;
+            }
+            if (word.value == "") {
+                showNotification('Please enter a word to translate', 'war_livl_2');
+                return;
+            }
+
+
+            // Check if word is already added
+            if (isWordAlreadyAdded(word)) {
+                showNotification('This word has already been translated', 'war_livl_1');
+                return;
+            }
+
+            try {
+                // if (translationInput.value ==""){
+
+                // }
+                // Show loading state
+                translationInput.value = 'Translating...';
+
+                // Detect the language of the word
+                const detectedLang = detectLanguage(word);
+                let sourceLang = 'en'; // Default source language is English
+                let targetLang = 'ar'; // Default target language is Arabic
+
+                // Change language pair based on detection
+                if (detectedLang === 'en') {
+                    sourceLang = 'en';
+                    if (languageSelect.value === 'english<->french') {
+                        targetLang = 'fr'; // English ↔ French
+                    } else if (languageSelect.value === 'english<->spanish') {
+                        targetLang = 'es'; // English ↔ Spanish
+                    }
+                } else if (detectedLang === 'ar') {
+                    sourceLang = 'ar';
+                    targetLang = 'en'; // Arabic ↔ English by default
+                    if (languageSelect.value === 'arabic<->english') {
+                        targetLang = 'en'; // Arabic ↔ English
+                    }
+                } else {
+                    sourceLang = 'en';
+                    targetLang = 'fr';
+                }
+
+                // Using MyMemory API (Free Translation API)
+                const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(word)}&langpair=${sourceLang}|${targetLang}`;
+                const response = await fetch(url);
+                const data = await response.json();
+
+                // Check for the "MYMEMORY WARNING"
+                if (data.responseData && data.responseData.translatedText && data.responseData.translatedText.includes('MYMEMORY WARNING')) {
+                    console.warn('Translation limit reached');
+                    translationInput.value = ''; // Empty the input value
+                    return;
+                }
+
+                // Handle translation response
+                if (!data.responseData || !data.responseData.translatedText) {
+                    throw new Error('Translation failed');
+                }
+
+                translationInput.value = data.responseData.translatedText;
+            } catch (error) {
+                console.error('Translation error:', error);
+                translationInput.value = '';
+            }
+        }
+
+        function isWordAlreadyAdded(word) {
+            // Replace with your logic to check if the word is already translated
+            const alreadyTranslatedWords = ['hello', 'world']; // Example array, replace with actual storage/logic
+            return alreadyTranslatedWords.includes(word.toLowerCase());
+        }
+
+
+
+        function detectLanguage(word) {
+            // Simple check to detect Arabic or English based on characters
+            const arabicPattern = /[\u0600-\u06FF]/; // Arabic range in Unicode
+            const englishPattern = /^[a-zA-Z\s]*$/; // English letters only (ignores spaces)
+
+            if (arabicPattern.test(word)) {
+                return 'ar'; // Arabic
+            } else if (englishPattern.test(word)) {
+                return 'en'; // English
+            } else {
+                return 'unknown'; // Unknown language
+            }
+        }
+
+        // Store predefined word sets
+        const wordSets = {
+            general: [
+                { word: "analyze", translation: "تحليل", category: "general", language: "english<->arabic", example: "We need to analyze the data before making decisions." },
+                { word: "sequence", translation: "تسلسل", category: "general", language: "english<->arabic", example: "The sequence of events led to a surprising conclusion." },
+                { word: "Exceptions", translation: "استثناءات", category: "general", language: "english<->arabic", example: "There are exceptions to this rule." }
+            ],
+            business: [
+                { word: "investment", translation: "استثمار", category: "business", language: "english<->arabic", example: "This is a long-term investment." },
+                { word: "strategy", translation: "استراتيجية", category: "business", language: "english<->arabic", example: "We need a new marketing strategy." }
+            ],
+            technology: [
+                { word: "algorithm", translation: "خوارزمية", category: "technology", language: "english<->arabic", example: "The algorithm processes data efficiently." },
+                { word: "database", translation: "قاعدة بيانات", category: "technology", language: "english<->arabic", example: "The database stores customer information." }
+            ]
+        };
+        // Keep track of which sets have been added
+        let addedSets = new Set();
+        function newWord() {
+            // Show loading state on the button
+            const button = document.getElementById('btnAddNewData');
+            const originalContent = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            button.disabled = true;
+
+            try {
+                // Get all available sets that haven't been fully added yet
+                const availableSets = Object.keys(wordSets).filter(set => {
+                    const remainingWords = wordSets[set].filter(word =>
+                        !words.some(w => w.word === word.word)
+                    );
+                    return remainingWords.length > 0;
+                });
+
+                if (availableSets.length === 0) {
+                    showNotification('All available words have been added! Try adding custom words instead.','war_livl_1');
+                    return;
+                }
+
+                // Pick a random set from available sets
+                const randomSet = availableSets[Math.floor(Math.random() * availableSets.length)];
+
+                // Filter out words already in the table
+                let newWords = wordSets[randomSet].filter(word =>
+                    !words.some(w => w.word === word.word)
+                );
+
+                if (newWords.length === 0) {
+                    showNotification(`No new words available in the ${randomSet} set.`);
+                    return;
+                }
+
+                // Select a random subset of words (e.g., 2-3 words at a time)
+                const randomWords = [];
+                const count = Math.min(3, newWords.length); // Adjust number of words to add
+                for (let i = 0; i < count; i++) {
+                    const randomIndex = Math.floor(Math.random() * newWords.length);
+                    randomWords.push(newWords.splice(randomIndex, 1)[0]);
+                }
+
+                // Add timestamp and initialize properties for each word
+                const wordsToAdd = randomWords.map(word => ({
+                    ...word,
+                    dateAdded: new Date().toISOString(),
+                    isFavorite: false,
+                    isMastered: false,
+                    id: generateUniqueId() // Add unique ID for each word
+                }));
+
+                // Add words to the main array
+                words.push(...wordsToAdd);
+
+                // Save to local storage
+                saveToLocalStorage();
+
+                // Re-render the words table
+                renderWordsTable();
+
+                // Show success notification
+                showNotification(`Added ${wordsToAdd.length} new ${randomSet} words successfully!`);
+
+                // Add animation to new words
+                animateNewWords(wordsToAdd);
+
+            } catch (error) {
+                console.error('Error adding new words:', error);
+                showNotification('Error adding new words. Please try again.','war_livl_2');
+            } finally {
+                // Restore button state
+                setTimeout(() => {
+                    button.innerHTML = originalContent;
+                    button.disabled = false;
+                }, 1000);
+            }
+        }
+
+        // Local Storage Management  testestes 
+        function saveToLocalStorage() {
+            localStorage.setItem('vocabularyWords', JSON.stringify(words));
+        }
+
+        function loadFromLocalStorage() {
+            const savedWords = localStorage.getItem('vocabularyWords');
+            if (savedWords) {
+                words = JSON.parse(savedWords);
+                renderWordsTable();
+            }
+        }
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function () {
+            // Load word data from local storage
+            loadFromLocalStorage();
+
+            // Initialize added sets from local storage
+            const savedSets = localStorage.getItem('addedWordSets');
+            if (savedSets) {
+                addedSets = new Set(JSON.parse(savedSets));
+            }
+
+            // Add event listeners for filters
+            searchInput.addEventListener('input', filterWords);
+            categoryFilter.addEventListener('change', filterWords);
+            languageFilter.addEventListener('change', filterWords);
+            sortFilter.addEventListener('change', filterWords);
+
+            // Add auto-translate event listener
+            // const wordInput = document.getElementById('word');
+            // if (wordInput) {
+            //     wordInput.addEventListener('blur', autoTranslate);
+            // }
+        });
+
+        // Generate unique ID for each word
+        function generateUniqueId() {
+            return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        }
+
+        // Animate new words in the table
+        function animateNewWords(newWords) {
+            const rows = document.querySelectorAll('#wordsTableBody tr');
+            rows.forEach(row => {
+                const wordId = row.dataset.wordId;
+                if (newWords.some(word => word.id === wordId)) {
+                    row.classList.add('animate__animated', 'animate__fadeIn');
+                    setTimeout(() => {
+                        row.classList.remove('animate__animated', 'animate__fadeIn');
+                    }, 1000);
+                }
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>
+<!-- test -->

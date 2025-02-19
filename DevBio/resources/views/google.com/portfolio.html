@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samir Aoulad Amar - Portfolio</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #fff;
+            animation: fadeIn 1s ease-in;
+        }
+        header {
+            background: #6a0dad;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            animation: fadeIn 1.5s ease-in;
+        }
+        section {
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            animation: fadeIn 2s ease-in;
+        }
+        h2 {
+            color: #c792ea;
+        }
+        .contact, .skills, .projects, .experience {
+            margin-bottom: 20px;
+        }
+        .skills div, .projects div {
+            background: #333;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .skills i, .projects i, .contact i {
+            margin-right: 10px;
+            color: #c792ea;
+        }
+    </style>
+</head>
+<body>
+    <header>Samir Aoulad Amar - Full-Stack Developer</header>
+    <section>
+        <div class="container">
+            <div class="contact">
+                <h2><i class="fas fa-address-book"></i> Contact</h2>
+                <p><i class="fas fa-envelope"></i> aouladamarsamir@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +212 718087106</p>
+                <p><i class="fab fa-github"></i> GitHub: ../samir-aoulad-amar/..</p>
+                <p><i class="fab fa-linkedin"></i> LinkedIn: ../samir-aoulad-amar/..</p>
+                <p><i class="fas fa-map-marker-alt"></i> Bni Ouriaghel, TANGER</p>
+            </div>
+            <div class="skills">
+                <h2><i class="fas fa-code"></i> Compétences</h2>
+                <div><i class="fab fa-js"></i> JavaScript, React Js, Tailwind CSS, Bootstrap, AJAX, HTML & CSS</div>
+                <div><i class="fas fa-database"></i> PHP, Laravel, SQL/MySQL</div>
+                <div><i class="fas fa-mobile-alt"></i> Kotlin, Jetpack Compose</div>
+                <div><i class="fas fa-pencil-ruler"></i> Figma, Canva, Justinmind</div>
+                <div><i class="fas fa-tools"></i> Git, GitHub, Linux, Kali Linux, VsCode, PhpStorm, PhpMyAdmin, Trello</div>
+            </div>
+            <div class="projects">
+                <h2><i class="fas fa-project-diagram"></i> Projets</h2>
+                <div><i class="fas fa-utensils"></i> Application Web Full-Stack pour Livraison de nourriture (FOOD DELIVERY)</div>
+                <div><i class="fas fa-film"></i> Application Web Front-End – Intégration d'API de Films</div>
+            </div>
+            <div class="experience">
+                <h2><i class="fas fa-briefcase"></i> Expérience</h2>
+                <p><i class="fas fa-calendar-alt"></i> Stage: Développeur Backend - Projet E-commerce Markotincom [20/6/2024 - 20/7/2024]</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - TypeDev</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2A2D34;
+            color: white;
+            text-align: center;
+        }
+        h1 {
+            font-size: 4rem;
+            margin-top: 100px;
+            animation: fadeIn 1.5s ease-out;
+        }
+        p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-out;
+            padding: 0 20px;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #212325;
+            padding: 20px 0;
+            z-index: 10;
+            animation: slideIn 1s ease-out;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 30px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            border-radius: 5px;
+        }
+        nav ul li a:hover {
+            color: #DFB514;
+            background-color: #2D2F35;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Contact Information</h1>
+        <p>If you have any questions or need assistance, feel free to reach out to me:</p>
+        <p>Email: <a href="mailto:aouladamarsamir@gmail.com" style="color: #DFB514;">aouladamarsamir@gmail.com</a></p>
+        <p>Phone: <a href="tel:+212718087106" style="color: #DFB514;">+212718087106</a></p>
+        <p>GitHub: <a href="https://github.com/samir20-23" target="_blank" style="color: #DFB514;">samir20-23</a></p>
+    </div>
+
+</body>
+</html>

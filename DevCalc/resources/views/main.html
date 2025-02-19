@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dark Mode Challenge Games</title>
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+    /* Sidebar (Tree Navigation) */
+    .sidebar {
+      width: 250px;
+      background-color: #1f1f1f;
+      padding: 20px;
+    }
+    .sidebar h2 {
+      margin-top: 0;
+    }
+    .sidebar ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .sidebar ul li {
+      padding: 10px;
+      cursor: pointer;
+      border: 1px solid #333;
+      margin-bottom: 5px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .sidebar ul li:hover {
+      background-color: #333;
+    }
+    #darkModeToggle {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background: #333;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    #darkModeToggle:hover {
+      background-color: #555;
+    }
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      padding: 30px;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #1f1f1f;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      font-size: 0.8em;
+    }
+    /* Game Section Styles */
+    .game-section {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    input[type="number"],
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      margin: 10px 0;
+      font-size: 1em;
+      border: 1px solid #444;
+      border-radius: 5px;
+      background-color: #333;
+      color: #fff;
+    }
+    button.game-btn {
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #bb86fc;
+      color: #121212;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button.game-btn:hover {
+      background-color: #9a67ea;
+    }
+    .feedback {
+      margin: 15px 0;
+      font-size: 1.2em;
+    }
+    .correct {
+      color: #4caf50;
+      animation: pulse 0.5s;
+    }
+    .wrong {
+      color: #f44336;
+      animation: shake 0.5s;
+    }
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      50% { transform: translateX(8px); }
+      75% { transform: translateX(-8px); }
+      100% { transform: translateX(0); }
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    /* Tree Representation Styles */
+    .tree {
+      margin: 20px auto;
+      text-align: center;
+      animation: fadeIn 0.5s;
+    }
+    .tree .node {
+      background-color: #333;
+      color: #e0e0e0;
+      padding: 10px;
+      border-radius: 4px;
+      display: inline-block;
+      margin: 5px;
+      min-width: 40px;
+      position: relative;
+    }
+    .tree .node.operator {
+      font-weight: bold;
+      background-color: #555;
+    }
+    .tree .children {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .tree .children::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      border-left: 1px solid #e0e0e0;
+      height: 10px;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    /* Light mode overrides */
+    .light-mode {
+      background-color: #f5f5f5;
+      color: #121212;
+    }
+    .light-mode body {
+      background-color: #f5f5f5;
+      color: #121212;
+    }
+    .light-mode .sidebar {
+      background-color: #e0e0e0;
+      color: #121212;
+    }
+    .light-mode .sidebar ul li {
+      border: 1px solid #ccc;
+    }
+    .light-mode #darkModeToggle {
+      background-color: #ccc;
+      color: #121212;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2>Games Tree</h2>
+      <ul>
+        <li data-game="arithmetic">Arithmetic Challenge</li>
+        <li data-game="range">Calculator Range Challenge</li>
+        <li data-game="typing">Typing Speed Challenge</li>
+      </ul>
+      <button id="darkModeToggle">Toggle Light Mode</button>
+    </div>
+    <div class="main-content">
+      <div id="game-container">
+        <h2>Welcome!</h2>
+        <p>Select a game from the sidebar to start your challenge.</p>
+      </div>
+    </div>
+  </div>
+  <footer>
+    &copy; 2025 Dark Mode Challenge Games. All rights reserved.
+  </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const gameContainer = document.getElementById('game-container');
+      const gameItems = document.querySelectorAll('.sidebar ul li');
+      const darkModeToggle = document.getElementById('darkModeToggle');
+
+      // Toggle dark/light mode
+      darkModeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('light-mode');
+        darkModeToggle.textContent = document.body.classList.contains('light-mode') ? "Toggle Dark Mode" : "Toggle Light Mode";
+      });
+
+      // Navigation handling (tree navigation)
+      gameItems.forEach(item => {
+        item.addEventListener('click', function() {
+          const game = item.getAttribute('data-game');
+          loadGame(game);
+        });
+      });
+
+      function loadGame(game) {
+        if(game === 'arithmetic') {
+          loadArithmeticChallenge();
+        } else if(game === 'range') {
+          loadRangeChallenge();
+        } else if(game === 'typing') {
+          loadTypingChallenge();
+        }
+      }
+
+      /* --- Global Variables for Arithmetic Game --- */
+      let currentArithmeticQuestion = {};
+
+      /* --- Arithmetic Challenge Game --- */
+      function loadArithmeticChallenge() {
+        gameContainer.innerHTML = `
+          <div class="game-section" id="arithmetic-game">
+            <h2>Arithmetic Challenge</h2>
+            <p>Solve the following problem:</p>
+            <div id="question"></div>
+            <input type="number" id="answer" placeholder="Your answer" />
+            <button class="game-btn" id="submitAnswer">Submit</button>
+            <div class="feedback" id="feedback"></div>
+            <div id="tree-container"></div>
+          </div>
+        `;
+        generateArithmeticQuestion();
+        document.getElementById('submitAnswer').addEventListener('click', checkArithmeticAnswer);
+      }
+
+      function generateArithmeticQuestion() {
+        const operators = ['+', '-', '*', '/'];
+        const num1 = Math.floor(Math.random() * 50) + 1;
+        const num2 = Math.floor(Math.random() * 50) + 1;
+        const operator = operators[Math.floor(Math.random() * operators.length)];
+        let questionText = "";
+        let answer;
+        if(operator === '/') {
+          const product = num1 * num2;
+          questionText = `${product} / ${num1}`;
+          answer = num2;
+        } else if(operator === '*') {
+          questionText = `${num1} * ${num2}`;
+          answer = num1 * num2;
+        } else if(operator === '-') {
+          questionText = `${num1} - ${num2}`;
+          answer = num1 - num2;
+        } else {
+          questionText = `${num1} + ${num2}`;
+          answer = num1 + num2;
+        }
+        currentArithmeticQuestion = { num1, num2, operator, questionText, answer };
+        document.getElementById('question').textContent = questionText;
+        document.getElementById('answer').value = "";
+        document.getElementById('feedback').textContent = "";
+        document.getElementById('tree-container').innerHTML = "";
+      }
+
+      function checkArithmeticAnswer() {
+        const userAnswer = parseFloat(document.getElementById('answer').value);
+        const feedbackEl = document.getElementById('feedback');
+        if(userAnswer === currentArithmeticQuestion.answer) {
+          feedbackEl.textContent = "Correct!";
+          feedbackEl.className = "feedback correct";
+          document.getElementById('tree-container').innerHTML = "";
+          setTimeout(generateArithmeticQuestion, 1000);
+        } else {
+          feedbackEl.textContent = "Wrong, try again!";
+          feedbackEl.className = "feedback wrong";
+          // Show a visual "tree" reaction of the arithmetic operation
+          showTreeRepresentation(currentArithmeticQuestion);
+        }
+      }
+
+      function showTreeRepresentation(qObj) {
+        const treeContainer = document.getElementById('tree-container');
+        let treeHTML = `<div class="tree">`;
+        treeHTML += `<div class="node operator">${qObj.operator}</div>`;
+        treeHTML += `<div class="children">`;
+        treeHTML += `<div class="node operand">${qObj.num1}</div>`;
+        treeHTML += `<div class="node operand">${qObj.num2}</div>`;
+        treeHTML += `</div></div>`;
+        treeContainer.innerHTML = treeHTML;
+      }
+
+      /* --- Calculator Range Challenge (Numbers 1-100) --- */
+      function loadRangeChallenge() {
+        gameContainer.innerHTML = `
+          <div class="game-section" id="range-game">
+            <h2>Calculator Range Challenge</h2>
+            <p>Solve the following problem (numbers between 1 and 100):</p>
+            <div id="range-question"></div>
+            <input type="number" id="range-answer" placeholder="Your answer" />
+            <button class="game-btn" id="submitRangeAnswer">Submit</button>
+            <div class="feedback" id="range-feedback"></div>
+          </div>
+        `;
+        generateRangeQuestion();
+        document.getElementById('submitRangeAnswer').addEventListener('click', checkRangeAnswer);
+      }
+
+      let currentRangeAnswer;
+
+      function generateRangeQuestion() {
+        const operators = ['+', '-', '*', '/'];
+        const num1 = Math.floor(Math.random() * 100) + 1;
+        const num2 = Math.floor(Math.random() * 100) + 1;
+        const operator = operators[Math.floor(Math.random() * operators.length)];
+        let questionText = "";
+        let answer;
+        if(operator === '/') {
+          const product = num1 * num2;
+          questionText = `${product} / ${num1}`;
+          answer = num2;
+        } else if(operator === '*') {
+          questionText = `${num1} * ${num2}`;
+          answer = num1 * num2;
+        } else if(operator === '-') {
+          questionText = `${num1} - ${num2}`;
+          answer = num1 - num2;
+        } else {
+          questionText = `${num1} + ${num2}`;
+          answer = num1 + num2;
+        }
+        currentRangeAnswer = answer;
+        document.getElementById('range-question').textContent = questionText;
+        document.getElementById('range-answer').value = "";
+        document.getElementById('range-feedback').textContent = "";
+      }
+
+      function checkRangeAnswer() {
+        const userAnswer = parseFloat(document.getElementById('range-answer').value);
+        const feedbackEl = document.getElementById('range-feedback');
+        if(userAnswer === currentRangeAnswer) {
+          feedbackEl.textContent = "Correct!";
+          feedbackEl.className = "feedback correct";
+          setTimeout(generateRangeQuestion, 1000);
+        } else {
+          feedbackEl.textContent = "Wrong, try again!";
+          feedbackEl.className = "feedback wrong";
+        }
+      }
+
+      /* --- Typing Speed Challenge --- */
+      function loadTypingChallenge() {
+        gameContainer.innerHTML = `
+          <div class="game-section" id="typing-game">
+            <h2>Typing Speed Challenge</h2>
+            <p>Type the following sentence as quickly as you can:</p>
+            <div id="typing-sentence" style="margin-bottom:20px; font-style: italic;"></div>
+            <input type="text" id="typing-input" placeholder="Start typing here..." />
+            <div class="feedback" id="typing-feedback"></div>
+            <button class="game-btn" id="restartTyping" style="display:none; margin-top:15px;">Restart</button>
+          </div>
+        `;
+        const sentences = [
+          "The quick brown fox jumps over the lazy dog.",
+          "Practice makes perfect, so keep typing fast.",
+          "Challenge yourself with every keystroke."
+        ];
+        const sentence = sentences[Math.floor(Math.random() * sentences.length)];
+        document.getElementById('typing-sentence').textContent = sentence;
+        document.getElementById('typing-input').value = "";
+        document.getElementById('typing-feedback').textContent = "";
+        let startTime = null;
+        const inputField = document.getElementById('typing-input');
+
+        inputField.addEventListener('input', function() {
+          if(startTime === null) {
+            startTime = new Date();
+          }
+          if(inputField.value === sentence) {
+            const endTime = new Date();
+            const timeTaken = ((endTime - startTime) / 1000).toFixed(2);
+            document.getElementById('typing-feedback').textContent = "Completed in " + timeTaken + " seconds!";
+            document.getElementById('restartTyping').style.display = "inline-block";
+          }
+        });
+
+        document.getElementById('restartTyping').addEventListener('click', loadTypingChallenge);
+      }
+    });
+  </script>
+</body>
+</html>
