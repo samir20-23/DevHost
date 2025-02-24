@@ -1,5 +1,7 @@
- 
-
+<div id="header" align="center">
+  <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHNrcjlnNHRhY2R2dzc0N2ZiOWZxMTh2NzY2aXlmOG1tdXMxMGRlbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dOMKHeyvBqQkf7rbaA/giphy.gif" width="480"/>
+       </a>
+</div>
 # 📂 **Ultimate App Collection**  
 
 📌 **Welcome to the Ultimate App Collection Repository!**  
