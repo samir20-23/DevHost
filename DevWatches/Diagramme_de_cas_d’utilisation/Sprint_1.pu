@@ -1,0 +1,23 @@
+@startuml Montres_ecommerce
+left to right direction
+actor Client
+actor Administrateur
+
+usecase "Parcourir les produits" as UC_Browse
+usecase "Rechercher des produits" as UC_Search
+usecase "Ajouter au panier" as UC_AddCart
+usecase "Voir le panier" as UC_ViewCart
+usecase "Passer commande" as UC_Order
+usecase "Gérer les produits" as UC_ManageProducts
+usecase "Gérer les commandes" as UC_ManageOrders
+
+Administrateur -- UC_ManageProducts
+Administrateur -- UC_ManageOrders
+
+Client -- UC_AddCart
+Client -- UC_ViewCart
+Client -- UC_Browse
+Client -- UC_Search
+Client -- UC_Order
+
+@enduml

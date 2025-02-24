@@ -1,0 +1,16 @@
+@startuml Watches_ecommerce
+left to right direction
+actor Customer
+actor Admin
+
+usecase "Add to Cart" as UC_AddCart
+usecase "View Cart" as UC_ViewCart
+usecase "Checkout" as UC_Checkout
+usecase "Manage Users" as UC_ManageUsers
+
+Customer --> UC_AddCart
+Customer --> UC_ViewCart
+Customer --> UC_Checkout
+
+Admin --> UC_ManageUsers
+@enduml
