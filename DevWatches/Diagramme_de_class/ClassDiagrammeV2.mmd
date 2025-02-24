@@ -1,0 +1,32 @@
+classDiagram
+    class Utilisateur {
+        +id: int
+        +nom: string
+        +email: string
+        +mot_de_passe: string
+        +rôle: string
+    }
+
+    class Produit {
+        +id: int
+        +nom: string
+        +description: string
+        +prix: float
+        +quantité: int
+    }
+
+    class Catégorie {
+        +id: int
+        +nom: string
+    }
+
+    class Commande {
+        +id: int
+        +statut: string
+        +quantité:int
+    }
+
+
+    Utilisateur "1" -- "*" Commande : possède
+    Catégorie "1" -- "*" Produit : contient
+    Commande "*" -- "1" Produit : inclut

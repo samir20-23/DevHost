@@ -1,0 +1,57 @@
+classDiagram
+    class Utilisateur {
+        +id: int
+        +nom: string
+        +email: string
+        +mot_de_passe: string
+        +rôle: string
+        +horodatages()
+    }
+
+    class Produit {
+        +id: int
+        +nom: string
+        +description: string
+        +prix: float
+        +quantité: int
+        +horodatages()
+    }
+
+    class Catégorie {
+        +id: int
+        +nom: string
+        +horodatages()
+    }
+
+    class Commande {
+        +id: int
+        +statut: string
+        +prix_total: float
+        +horodatages()
+    }
+
+    class Panier {
+        +id: int
+        +horodatages()
+    }
+
+    class ÉlémentPanier {
+        +id: int
+        +quantité: int
+        +horodatages()
+    }
+
+    class Avis {
+        +id: int
+        +note: int
+        +commentaire: string
+        +horodatages()
+    }
+
+    Utilisateur "1" --> "*" Commande : possède
+    Utilisateur "1" --> "1" Panier : détient
+    Panier "1" --> "*" ÉlémentPanier : contient
+    Produit "1" --> "*" ÉlémentPanier : inclus dans
+    Produit "1" --> "*" Avis : reçoit
+    Catégorie "1" --> "*" Produit : contient
+    Commande "1" --> "*" Produit : inclut
