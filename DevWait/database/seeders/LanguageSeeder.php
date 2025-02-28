@@ -11,7 +11,7 @@ class LanguageSeeder extends Seeder
     {
         $languages = [
             'ableton', 'activitypub', 'actix', 'adonis', 'ae', 'aiscript', 'alpinejs', 'anaconda',
-            'androidstudio', 'angular', 'ansible', 'apollo', 'apple', 'appwrite', 'arch', 'arduino',
+            'androidstudio', 'angular', 'ansible', 'apollo', 'appwrite', 'arch', 'arduino',
             'astro', 'atom', 'au', 'autocad', 'aws', 'azul', 'azure', 'babel', 'bash', 'bevy', 
             'bitbucket', 'blender', 'bootstrap', 'bsd', 'bun', 'c', 'cs', 'cpp', 'crystal', 'cassandra',
             'clion', 'clojure', 'cloudflare', 'cmake', 'codepen', 'coffeescript', 'css', 'cypress', 
