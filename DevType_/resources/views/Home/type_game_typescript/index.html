@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/typing-icon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TypeRush - Typing Speed Test</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="typing-test">
+            <div class="test-header">
+                <div class="test-modes">
+                    <button class="mode-btn active" data-mode="15">15 sec</button>
+                    <button class="mode-btn" data-mode="30">30 sec</button>
+                    <button class="mode-btn" data-mode="60">60 sec</button>
+                </div>
+                <div class="test-status">
+                    <span id="timer">30</span>
+                </div>
+            </div>
+            
+            <div class="text-container">
+                <div id="text-display" class="text-display"></div>
+            </div>
+            
+            <textarea 
+                id="user-input" 
+                class="user-input" 
+                placeholder="Start typing here..." 
+                autocomplete="off" 
+                autocorrect="off" 
+                autocapitalize="off" 
+                spellcheck="false"
+            ></textarea>
+            
+            <div class="stats-container">
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-label">WPM</span>
+                        <span id="wpm-display" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Accuracy</span>
+                        <span id="accuracy-display" class="stat-value">100%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Errors</span>
+                        <span id="errors-display" class="stat-value">0</span>
+                    </div>
+                </div>
+                <button id="restart-btn" class="restart-btn">
+                    <i class="fas fa-redo"></i> Restart
+                </button>
+            </div>
+        </div>
+        
+        <div class="login-section">
+            <h2>TypeRush</h2>
+            <div class="login-buttons">
+                <button class="login-btn google-btn">
+                    <i class="fab fa-google"></i> Continue with Google
+                </button>
+                <button class="login-btn github-btn">
+                    <i class="fab fa-github"></i> Continue with GitHub
+                </button>
+            </div>
+            <div class="account-links">
+                <a href="#" class="link">Create Account</a>
+                <a href="#" class="link">Login</a>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
