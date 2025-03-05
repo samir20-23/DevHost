@@ -113,6 +113,23 @@ function createCheckbox(langName, iconSrc) {
 
     main.appendChild(langElement);
 }
+//   mode darch
+const modeButton = document.createElement('button');
+modeButton.textContent = 'Toggle Mode';
+document.getElementById('btns').appendChild(modeButton);
+
+modeButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+
+    // Save mode preference in localStorage
+    const currentMode = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+    localStorage.setItem('mode', currentMode);
+});
+
+// Check the saved mode from localStorage
+if (localStorage.getItem('mode') === 'dark') {
+    document.body.classList.add('dark-mode');
+}
 
 // Call the function with different values
 createCheckbox('ableton', './icons/Ableton-Dark.svg');

@@ -176,4 +176,34 @@ html,body{
     margin-top:100px
   }.btn.twtr:after{content:"\1d54f";padding-left:5px}
   
-  
+  body {
+    transition: background-color 0.3s, color 0.3s;
+    font-family: "Montserrat", sans-serif;
+}
+
+button {
+    padding: 5px 1px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+.dark-mode button {
+    background-color: #444;
+    color: white;
+}
+
+.dark-mode button:hover {
+    background-color: #666;
+}
