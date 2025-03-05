@@ -1,0 +1,178 @@
+
+html,body{
+    margin:0;
+    height:120%;
+     font-family: "Montserrat", sans-serif;
+  
+  }
+  a{
+    text-decoration:none
+  }
+  .header{
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    height:70vw;
+    min-height:400px;
+    max-height:750px;
+    min-width:300px;
+    color:#eee;
+    border-radius: 0 0 20px 20px;
+    text-shadow:0 2px 6px #000a
+  }
+  .header:after{
+    content:"";
+    width:100%;
+    height:100%;
+    position:absolute;
+    bottom:0;
+    left:0;
+    z-index:-1;
+   background: linear-gradient(to bottom, rgba(0,0,0,0.12) 40%,rgba(27,32,48,1) 100%);
+  }
+  .header:before{
+    content:"";
+    width:100%;
+    height:200%;
+    position:absolute;
+    top:0;
+    left:0;
+      -webkit-backface-visibility: hidden;
+      -webkit-transform: translateZ(0); backface-visibility: hidden;
+    scale(1.0, 1.0);
+      transform: translateZ(0);
+    background:#1B2030 url(https://www.dignited.com/wp-content/uploads/2022/08/top10lan.jpg) 100% 0 no-repeat; 
+    background-size:100%;
+    background-attachment:fixed;
+    animation: grow 360s  linear 10ms infinite;
+    transition:all 0.4s ease-in-out;
+    z-index:-2
+  }
+  .header a{
+    color:#eee
+  }
+  .menu{
+    display:block;
+    width:40px;
+    height:30px;
+    border:2px solid #fff;
+    border-radius:3px;
+    position:absolute;
+    right:20px;
+    top:20px;
+    text-decoration:none
+  }
+  .menu:after{
+    content:"";
+    display:block;
+    width:20px;
+    height:3px;
+    background:#fff;
+    position:absolute;
+    margin:0 auto;
+    top:5px;
+    left:0;
+    right:0;
+    box-shadow:0 8px, 0 16px
+  }
+  .logo{
+    border:2px solid #fff;
+    border-radius:3px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    align-content:center;
+    margin:20px;
+    padding:0px 10px;
+    font-weight:900;
+    font-size:1.1em;
+    line-height:1;
+    box-sizing:border-box;
+    height:40px
+  }
+  .sides, .info{
+    flex: 0 0 auto;
+    width:50%
+  }
+  .info{
+    width:100%;
+    padding:15% 10% 0 10%;
+    text-align:center; 
+  }
+  .author{
+    display:inline-block;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:url(https://avatars.githubusercontent.com/u/144660881?v=4) center no-repeat;
+    background-size:cover;
+    box-shadow:0 2px 3px rgba(0,0,0,0.3);
+    margin-bottom:3px
+  }
+  .info h4, .meta{
+    font-size:0.7em
+  }
+  .meta{
+    font-style:italic;
+  }
+  @keyframes grow{
+    0% { transform: scale(1) translateY(0px)}
+    50% { transform: scale(1.2) translateY(-400px)}
+  }
+  .content{  
+    padding:5% 10%;
+    text-align:justify
+  }
+  .btn{
+    color:#333;
+    border:2px solid;
+    border-radius:3px;
+    text-decoration:none;
+    display:inline-block;
+    padding:5px 10px;
+    font-weight:600
+  }
+  
+  dialog {
+      display: block;
+      inset: 0;    
+      transition: opacity .5s;
+       border-radius:3px;
+      padding:20px; 
+      box-shadow: 0 0 10px 0 #000a;
+    background:#fffd;
+    border:0;
+    min-width:60vw
+  }
+   
+  dialog:not([open]) {
+      pointer-events: none;
+      opacity: 0;
+  }
+  
+  dialog::backdrop {
+    backdrop-filter: blur(0.25rem);
+  }
+   
+  dialog a {
+     font-size:1.4em;
+    display:block;
+    text-align:center;
+    margin:10px 15px;
+    padding:5px;
+    font-weight:600;
+    color:#333;
+    &:hover{
+      text-decoration:underline;
+      color:#000
+    }
+  }
+  
+  .twtr{
+    margin-top:100px
+  }.btn.twtr:after{content:"\1d54f";padding-left:5px}
+  

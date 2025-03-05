@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Interface</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&family=Yusei+Magic&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            background-color: rgba(255, 228, 196, 0.103);
+        }
+
+        #main #lang {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 15%;
+            border: 1px solid black;
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+        #lang #nameLang {
+            width: 100%;
+            font-family: "Yusei Magic", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            border: 1px solid rgba(146, 0, 0, 0.279);
+        }
+
+        #checkbox {
+            opacity: 10px;
+            cursor: pointer;
+            height: 10px;
+            width: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="sides">
+            <a href="#" class="logo">PROJECT HUB</a>
+        </div>
+        <div class="sides"> <a href="#" class="menu" id="openMenu"> </a></div>
+        <div class="info">
+            <h4><a href="#category">INTERFACE TRENDS</a></h4>
+            <h1>MODERN WEB DESIGN FOR 2025</h1>
+            <div class="meta">
+                <a href="https://www.instagram.com/dev_visionary/" target="_b" class="author"></a><br>
+                By <a href="https://www.instagram.com/dev_visionary/" target="_b">Alex Harper</a> on March 5, 2025
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <p style="text-align: center;">In the world of web design, trends are always evolving. With the rise of new
+            technologies and design patterns, it’s important to stay updated with what works best. From minimalist
+            layouts to dynamic interactions, modern web design emphasizes user engagement and intuitive experiences.</p>
+        <p align="center"><button class="btn twtr" id="columnBtn">Toggle Layout</button></p>
+    </section>
+
+    <dialog>
+        <a href=#>Portfolio</a>
+        <a href=#>Agency</a>
+        <a href=#>Services</a>
+        <a href=#>About Us</a>
+        <a href=#>Contact</a>
+        <a href=#>Pricing</a>
+    </dialog>
+
+    <div id="main">
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
