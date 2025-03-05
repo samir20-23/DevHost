@@ -14,7 +14,6 @@ dialog.addEventListener("click", ({ target: dialog }) => {
 // btn column 
 let columnBtn = document.getElementById('columnBtn');
 let main = document.getElementById('main');
-let lang = document.getElementById('lang');
 
 let nnn = 0;
 columnBtn.addEventListener('click', () => {
@@ -29,12 +28,10 @@ columnBtn.addEventListener('click', () => {
     }
     if (nnn == 2) {
         main.style.display = "flex";
-        main.style.flexWrap = "none";
+        main.style.flexWrap = "wrap";
         main.style.justifyContent = "center";
         main.style.alignContent = "center";
-        main.style.flexDirection = "column";
-        main.style.flexWrap = "wrap";
-        main.style.flexDirection = "none";
+        main.style.flexDirection = "inherit";
         nnn = 0;
     }
 
@@ -51,6 +48,7 @@ function createCheckbox(langName, iconSrc) {
     nameLang.textContent = `| ${langName} |`;
 
     let icon = document.createElement('img');
+    icon.id = "iconLang";
     icon.src = iconSrc;
     icon.width = 48;
 
@@ -63,34 +61,54 @@ function createCheckbox(langName, iconSrc) {
         localStorage.setItem(langName, checkbox.checked); // Save state to localStorage
     });
 
-    // Add click event listener to toggle card background color and text color
-    checkbox.addEventListener('click', () => {
-        // Check if the card is already active
-        const isActive = langElement.classList.contains('active');
+    langElement.appendChild(nameLang);
+    langElement.appendChild(icon);
+    langElement.appendChild(checkbox);
 
-        if (isActive) {
+    // Add click event listener to toggle the checkbox and background color when the card is clicked
+    langElement.addEventListener('click', () => {
+        checkbox.checked = !checkbox.checked; // Toggle checkbox state
+        localStorage.setItem(langName, checkbox.checked); // Save state to localStorage
+
+        // Toggle background color and text color based on checkbox state
+        if (checkbox.checked) {
+            langElement.classList.add('active');
+            langElement.style.backgroundColor = 'rgba(0, 0, 0, 0.533)';
+            langElement.style.color = 'rgb(255, 255, 255)';
+            localStorage.setItem(`${langName}-active`, true);
+        } else {
             langElement.classList.remove('active');
             langElement.style.backgroundColor = '';
             langElement.style.color = '';
             localStorage.removeItem(`${langName}-active`);
-        } else {
-            langElement.classList.add('active');
-            langElement.style.backgroundColor = 'rgba(0, 0, 0, 0.533)';
-            langElement.style.color = 'rgb(255, 255, 255)';
-            localStorage.setItem(`${langName}-active`, true); // Save the active state
-
         }
     });
 
-    langElement.appendChild(nameLang);
-    langElement.appendChild(icon);
-    langElement.appendChild(checkbox);
+    // If checkbox is clicked, toggle its state
+    checkbox.addEventListener('click', () => {
+        checkbox.checked = !checkbox.checked; // Toggle checkbox state
+        localStorage.setItem(langName, checkbox.checked); // Save state to localStorage
+
+        // Toggle background color and text color based on checkbox state
+        if (checkbox.checked) {
+            langElement.classList.add('active');
+            langElement.style.backgroundColor = 'rgba(0, 0, 0, 0.533)';
+            langElement.style.color = 'rgb(255, 255, 255)';
+            localStorage.setItem(`${langName}-active`, true);
+        } else {
+            langElement.classList.remove('active');
+            langElement.style.backgroundColor = '';
+            langElement.style.color = '';
+            localStorage.removeItem(`${langName}-active`);
+        }
+    });
 
     // Check if the card is active from localStorage
     if (localStorage.getItem(`${langName}-active`) === 'true') {
         langElement.style.backgroundColor = 'rgba(0, 0, 0, 0.533)';
         langElement.style.color = 'rgb(255, 255, 255)';
         langElement.classList.add('active');
+        checkbox.checked = true;
     }
 
     main.appendChild(langElement);
