@@ -1,137 +1,269 @@
-const openButton = document.querySelector("#openMenu");
-const dialog = document.querySelector("dialog");
 
-openButton.addEventListener("click", () => {
-    dialog.showModal();
+
+// mouse move
+
+const cursor = document.querySelector(".cursor");
+document.addEventListener("mousemove", (e) => {
+    const x = e.pageX; // Use pageX instead of clientX
+    const y = e.pageY; // Use pageY instead of clientY
+
+    cursor.style.left = `${x}px`;
+    cursor.style.top = `${y}px`;
+
+    // Particle effect
+    const particle = document.createElement("div");
+    particle.classList.add("particle");
+    document.body.appendChild(particle);
+    particle.style.left = `${x}px`;
+    particle.style.top = `${y}px`;
+
+    setTimeout(() => {
+        particle.remove();
+    }, 500);
 });
 
-dialog.addEventListener("click", ({ target: dialog }) => {
-    if (dialog.nodeName === "DIALOG") {
-        dialog.close("dismiss");
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Dummy translation function. Replace or remove if you have a real implementation.
+    function t(input) {
+      return input;
     }
-});
-
-// btn column 
-let columnBtn = document.getElementById('columnBtn');
-let main = document.getElementById('main');
-
-let nnn = 0;
-columnBtn.addEventListener('click', () => {
-    nnn++;
-
-    if (nnn == 1) {
-        main.style.display = "flex";
-        main.style.justifyContent = "center";
-        main.style.alignContent = "center";
-        main.style.flexDirection = "column";
-        main.style.flexWrap = "none";
-    }
-    if (nnn == 2) {
-        main.style.display = "flex";
-        main.style.flexWrap = "wrap";
-        main.style.justifyContent = "center";
-        main.style.alignContent = "center";
-        main.style.flexDirection = "inherit";
-        nnn = 0;
-    }
-
-    console.log(nnn);
-})
-
-// Function to create a checkbox input element
-function createCheckbox(langName, iconSrc) {
-    let langElement = document.createElement('div');
-    langElement.id = 'lang';
-
-    let nameLang = document.createElement('p');
-    nameLang.id = 'nameLang';
-    nameLang.textContent = `| ${langName} |`;
-
-    let icon = document.createElement('img');
-    icon.id = "iconLang";
-    icon.src = iconSrc;
-    icon.width = 48;
-
-    let checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.checked = localStorage.getItem(langName) === 'true'; // Retrieve the state from localStorage
-
-    // Add event listener to save the checkbox state to localStorage when checked/unchecked
-    checkbox.addEventListener('change', () => {
-        localStorage.setItem(langName, checkbox.checked); // Save state to localStorage
+  
+    // Dialog Open/Close
+    const openButton = document.querySelector("#openMenu");
+    const dialog = document.querySelector("dialog");
+  
+    openButton.addEventListener("click", () => dialog.showModal());
+  
+    dialog.addEventListener("click", ({ target }) => {
+      if (target.nodeName === "DIALOG") target.close("dismiss");
     });
-
-    langElement.appendChild(nameLang);
-    langElement.appendChild(icon);
-    langElement.appendChild(checkbox);
-
-    // Add click event listener to toggle the checkbox and background color when the card is clicked
-    langElement.addEventListener('click', () => {
-        checkbox.checked = !checkbox.checked; // Toggle checkbox state
-        localStorage.setItem(langName, checkbox.checked); // Save state to localStorage
-
-        // Toggle background color and text color based on checkbox state
-        if (checkbox.checked) {
-            langElement.classList.add('active');
-            langElement.style.backgroundColor = 'rgba(0, 0, 0, 0.533)';
-            langElement.style.color = 'rgb(255, 255, 255)';
-            localStorage.setItem(`${langName}-active`, true);
-        } else {
-            langElement.classList.remove('active');
-            langElement.style.backgroundColor = '';
-            langElement.style.color = '';
-            localStorage.removeItem(`${langName}-active`);
-        }
+  
+    // Toggle column layout
+    let columnBtn = document.getElementById("columnBtn");
+    let main = document.getElementById("main");
+    let wrap = 0;
+    columnBtn.addEventListener("click", () => {
+      wrap = (wrap + 1) % 2;
+      main.style.display = "flex";
+      main.style.justifyContent = "center";
+      main.style.alignContent = "center";
+      main.style.flexDirection = wrap ? "column" : "inherit";
+      main.style.flexWrap = wrap ? "nowrap" : "wrap";
     });
-
-    // If checkbox is clicked, toggle its state
-    checkbox.addEventListener('click', () => {
-        checkbox.checked = !checkbox.checked; // Toggle checkbox state
-        localStorage.setItem(langName, checkbox.checked); // Save state to localStorage
-
-        // Toggle background color and text color based on checkbox state
-        if (checkbox.checked) {
-            langElement.classList.add('active');
-            langElement.style.backgroundColor = 'rgba(0, 0, 0, 0.533)';
-            langElement.style.color = 'rgb(255, 255, 255)';
-            localStorage.setItem(`${langName}-active`, true);
-        } else {
-            langElement.classList.remove('active');
-            langElement.style.backgroundColor = '';
-            langElement.style.color = '';
-            localStorage.removeItem(`${langName}-active`);
-        }
-    });
-
-    // Check if the card is active from localStorage
-    if (localStorage.getItem(`${langName}-active`) === 'true') {
-        langElement.style.backgroundColor = 'rgba(0, 0, 0, 0.533)';
-        langElement.style.color = 'rgb(255, 255, 255)';
-        langElement.classList.add('active');
-        checkbox.checked = true;
+  
+    // Function to create a language item with checkboxes and description functionality
+    function createCheckbox(langName, iconSrc) {
+      // Create the main language container.
+      // NOTE: We keep the id "lang" per your CSS requirements.
+      let langElement = document.createElement("div");
+      langElement.classList.add("lang-item");
+      langElement.id = "lang";
+      langElement.setAttribute("data-lang", langName);
+  
+      // Create language name element.
+      let nameLang = document.createElement("p");
+      nameLang.classList.add("nameLang");
+      nameLang.id = 'nameLang';
+      nameLang.textContent = ` ${langName} `;
+  
+      // --- New: Copy the name text automatically when clicked ---
+      nameLang.addEventListener("click", (e) => {
+        e.stopPropagation(); // Prevent triggering other events on the language element.
+        navigator.clipboard.writeText(nameLang.textContent)
+          .then(() => { 
+            console.log(`${langName} copied to clipboard`);
+            // Optionally, you can add a visual cue here.
+          })
+          .catch((err) => {
+            console.error("Failed to copy: ", err);
+          });
+      });
+  
+      // Create icon element.
+      let icon = document.createElement("img");
+      icon.src = iconSrc;
+      icon.width = 48;
+      icon.classList.add("iconLang");
+  
+      // Create 3 checkboxes and load/save their state.
+      let checkboxes = [];
+      for (let i = 0; i < 3; i++) {
+        let checkbox = document.createElement("input");
+        // Added as requested:
+        t("input");
+        checkbox.type = "checkbox";
+        checkbox.id = "checkbox";
+        checkbox.classList.add("checkbox");
+        checkbox.checked = localStorage.getItem(`${langName}-checkbox${i}`) === "true";
+        checkbox.addEventListener("change", () => {
+          localStorage.setItem(`${langName}-checkbox${i}`, checkbox.checked);
+          updateLangActiveState(langElement, checkboxes);
+        });
+        checkboxes.push(checkbox);
+      }
+  
+      // Create the Description button (always labeled "Description").
+      let descButton = document.createElement("button");
+      descButton.textContent = "Description";
+      descButton.addEventListener("click", (e) => {
+        e.stopPropagation();
+        showDescriptionModal(langName);
+      });
+  
+      // Append name, icon, checkboxes, and description button to the language element.
+      langElement.append(nameLang, icon, ...checkboxes, descButton);
+  
+      // Toggle checkboxes when clicking on the language element (except on inputs, buttons, etc.).
+    //   langElement.addEventListener("click", (e) => {
+    //     if (
+    //       e.target.tagName !== "INPUT" &&
+    //       !e.target.closest(".desc-modal") &&
+    //       e.target.tagName !== "BUTTON" &&
+    //       e.target.tagName !== "TEXTAREA"
+    //     ) {
+    //       checkboxes.forEach((cb, i) => {
+    //         cb.checked = !cb.checked;
+    //         localStorage.setItem(`${langName}-checkbox${i}`, cb.checked);
+    //       });
+    //       updateLangActiveState(langElement, checkboxes);
+    //     }
+    //   });
+  
+      // Set initial active state based on the first checkbox.
+      if (checkboxes[0].checked) {
+        langElement.classList.add("active");
+        langElement.style.backgroundColor = "rgba(0, 0, 0, 0.533)";
+        langElement.style.color = "rgb(255, 255, 255)";
+      }
+  
+      main.appendChild(langElement);
     }
-
-    main.appendChild(langElement);
-}
-//   mode darch
-const modeButton = document.createElement('button');
-modeButton.textContent = 'Toggle Mode';
-document.getElementById('btns').appendChild(modeButton);
-
-modeButton.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-
-    // Save mode preference in localStorage
-    const currentMode = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-    localStorage.setItem('mode', currentMode);
-});
-
-// Check the saved mode from localStorage
-if (localStorage.getItem('mode') === 'dark') {
-    document.body.classList.add('dark-mode');
-}
-
-// Call the function with different values
+  
+    // Helper function to update the visual active state of the language element.
+    function updateLangActiveState(langElement, checkboxes) {
+      if (checkboxes[0].checked) {
+        langElement.classList.add("active");
+        langElement.style.backgroundColor = "rgba(0, 0, 0, 0.533)";
+        langElement.style.color = "rgb(255, 255, 255)";
+      } else {
+        langElement.classList.remove("active");
+        langElement.style.backgroundColor = "";
+        langElement.style.color = "";
+      }
+    }
+  
+    // Function to show the description modal for a given language.
+    function showDescriptionModal(langName) {
+      // Create modal overlay.
+      let modal = document.createElement("div");
+      modal.classList.add("desc-modal");
+  
+      // Create modal content container.
+      let modalContent = document.createElement("div");
+      modalContent.classList.add("desc-modal-content");
+  
+      // Add header.
+      let header = document.createElement("h2");
+      header.textContent = `Description for ${langName}`;
+      modalContent.appendChild(header);
+  
+      // Check if a description exists in localStorage.
+      let savedDescription = localStorage.getItem(`${langName}-description`);
+  
+      if (savedDescription) {
+        // Read-only view: display the saved description and buttons for editing or closing.
+        let descriptionPara = document.createElement("p");
+        descriptionPara.textContent = savedDescription;
+        modalContent.appendChild(descriptionPara);
+  
+        let btnContainer = document.createElement("div");
+  
+        let editButton = document.createElement("button");
+        editButton.textContent = "Edit";
+        editButton.addEventListener("click", () => {
+          // Switch to editing mode.
+          modalContent.innerHTML = "";
+          modalContent.appendChild(header);
+          let textarea = document.createElement("textarea");
+          textarea.value = savedDescription;
+          modalContent.appendChild(textarea);
+  
+          let btnContainerEdit = document.createElement("div");
+          let saveButton = document.createElement("button");
+          saveButton.textContent = "Save";
+          saveButton.addEventListener("click", () => {
+            let newDesc = textarea.value;
+            localStorage.setItem(`${langName}-description`, newDesc);
+            modal.remove();
+          });
+          let cancelButton = document.createElement("button");
+          cancelButton.textContent = "Close";
+          cancelButton.addEventListener("click", () => {
+            modal.remove();
+          });
+          btnContainerEdit.appendChild(saveButton);
+          btnContainerEdit.appendChild(cancelButton);
+          modalContent.appendChild(btnContainerEdit);
+        });
+  
+        let closeButton = document.createElement("button");
+        closeButton.textContent = "Close";
+        closeButton.addEventListener("click", () => {
+          modal.remove();
+        });
+  
+        btnContainer.appendChild(editButton);
+        btnContainer.appendChild(closeButton);
+        modalContent.appendChild(btnContainer);
+      } else {
+        // No saved description: show an editable textarea with Create and Close buttons.
+        let textarea = document.createElement("textarea");
+        textarea.placeholder = "Enter your description here...";
+        modalContent.appendChild(textarea);
+  
+        let btnContainer = document.createElement("div");
+        let createButton = document.createElement("button");
+        createButton.textContent = "Create";
+        createButton.addEventListener("click", () => {
+          let newDesc = textarea.value;
+          localStorage.setItem(`${langName}-description`, newDesc);
+          modal.remove();
+        });
+        let closeButton = document.createElement("button");
+        closeButton.textContent = "Close";
+        closeButton.addEventListener("click", () => {
+          modal.remove();
+        });
+        btnContainer.appendChild(createButton);
+        btnContainer.appendChild(closeButton);
+        modalContent.appendChild(btnContainer);
+      }
+  
+      modal.appendChild(modalContent);
+      document.body.appendChild(modal);
+    }
+  
+    // Dark mode toggle.
+    const modeButton = document.createElement("button");
+    modeButton.textContent = "Toggle Mode";
+    document.getElementById("btns").appendChild(modeButton);
+  
+    modeButton.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      localStorage.setItem(
+        "mode",
+        document.body.classList.contains("dark-mode") ? "dark" : "light"
+      );
+    });
+  
+    if (localStorage.getItem("mode") === "dark") {
+      document.body.classList.add("dark-mode");
+    }
+  
+    // Create language items. 
+  
 createCheckbox('ableton', './icons/Ableton-Dark.svg');
 createCheckbox('activitypub', './icons/ActivityPub-Dark.svg');
 createCheckbox('actix', './icons/Actix-Dark.svg');
@@ -366,3 +498,4 @@ createCheckbox('xd', './icons/XD.svg');
 createCheckbox('yarn', './icons/Yarn-Dark.svg');
 createCheckbox('yew', './icons/Yew-Dark.svg');
 createCheckbox('zig', './icons/Zig-Dark.svg');
+ });
