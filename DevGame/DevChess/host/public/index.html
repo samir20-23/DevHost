@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevChess</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" /> 
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+  <div class="game-container">
+    <h1>DevChess</h1>
+
+    <div class="game-info">
+      <div class="turn-indicator">
+        <span id="current-turn">👤 White's turn</span>
+      </div>
+
+      <div class="game-controls">
+        <button id="undo-btn">↩️ Undo</button>
+        <button id="restart-btn">🔄 Restart</button>
+      </div>
+    </div>
+
+    <div class="game-board-container">
+      <div class="captured-pieces white-captured">
+        <h3>Captured by White</h3>
+        <div id="black-captured" class="captured-pieces-list"></div>
+      </div>
+
+      <div class="chessboard" id="chessboard"></div>
+
+      <div class="captured-pieces black-captured">
+        <h3>Captured by Black</h3>
+        <div id="white-captured" class="captured-pieces-list"></div>
+      </div>
+    </div>
+
+    <div class="game-sidebar">
+      <div class="move-history">
+        <h3>Move History</h3>
+        <div id="move-history-list" class="move-history-list"></div>
+      </div>
+
+      <div class="timer-container">
+        <h3>Timer</h3>
+        <div class="timers">
+          <div class="player-timer">
+            <span>White: </span>
+            <span id="white-timer">10:00</span>
+          </div>
+          <div class="player-timer">
+            <span>Black: </span>
+            <span id="black-timer">10:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="promotion-modal" class="modal">
+        <div class="modal-content">
+          <h3>Choose Promotion</h3>
+          <div class="promotion-options">
+            <div class="promotion-piece" data-piece="queen">♕</div>
+            <div class="promotion-piece" data-piece="rook">♖</div>
+            <div class="promotion-piece" data-piece="bishop">♗</div>
+            <div class="promotion-piece" data-piece="knight">♘</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="game-message" class="game-message"></div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="/socket.io/socket.io.js"></script> 
+
+</body>
+
+</html>
