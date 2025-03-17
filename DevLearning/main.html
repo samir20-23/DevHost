@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevLearing</title>
+    <title>DevLearning</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&family=Yusei+Magic&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&family=Yusei+Magic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
- 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-
 <body>
     <div class="cursor"></div>
 
@@ -29,29 +26,143 @@
                 <a href="https://www.instagram.com/dev_visionary/" target="_b">aoulad amar samir </a>
                 <a href="https://github.com/samir20-23/" target="_blank" style="text-align: center; display: flex; justify-content: center; align-items: center; flex-direction: column;">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" width="18" height="48">
-                    github 
-                </a>  
-             
+                    github
+                </a>
             </div>
         </div>
     </div>
     <section class="content">
         <p style="text-align: center;">Here, I am listing the programming languages I will be learning. As I complete each language, I will mark it as finished and store my progress in localStorage.</p>
-        <p align="center" id="btns"><button class="btn twtr" id="columnBtn">Colmun</button></p>
+        <p align="center" id="btns">
+            <button class="btn twtr" id="columnBtn">Colmun</button>
+            <button id="importButton">Import Data</button>
+            <button id="exportButton">export Data</button>
+            <button id="game">
+                <i class="fas fa-game"></i> Game
+            </button>
+        </p>
     </section>
 
-    <dialog>
-        <a href=#>JavaScript</a>
-        <a href=#>Python</a>
-        <a href=#>Java</a>
-        <a href=#>C++</a>
-        <a href=#>PHP</a>
-        <a href=#>Kotlin</a>
+    <!-- Game Section -->
+    <div id="game-container"></div>
+   
+    <dialog id="infoDialog">
+        <a target="_blank" href="https://samiraouladamar-portfolio.vercel.app/">
+            <i class="fas fa-user"></i> About
+        </a>
+        <a target="_blank" href="https://github.com/samir20-23/DevHost/tree/main/DevLearning">
+            <i class="fas fa-code-branch"></i> Repository
+        </a>
+        <a target="_blank" href="mailto:aouladamarsamir@gmail.com">
+            <i class="fas fa-envelope"></i> Email
+        </a>
+        <a target="_blank" href="https://www.instagram.com/samir_devgenius/">
+            <i class="fab fa-instagram"></i> Instagram
+        </a>
+        <a target="_blank" href="https://github.com/samir20-23">
+            <i class="fab fa-github"></i> Github
+        </a>
+        <a target="_blank" href="#" id="backup">
+            <i class="fas fa-database"></i> Back Up
+        </a>
+        <a target="_blank" href="#">
+            <i class="fas fa-description"></i> description
+        </a>
     </dialog>
 
-    <div id="main">
-    </div>
+    <div id="main"></div>
     <script src="script.js"></script>
-</body>
+    <script>
+        let game = document.getElementById('game');
+        let gameContainer = document.getElementById('game-container');
+        let currentQuestionIndex = 0;
+        let questions = [];
 
+        let descriptionsData = {
+            "ableton": {
+                "description": "Ableton 🎵🎚️🎶 Ableton is a powerful digital audio workstation (DAW) for music production and live performances."
+            },
+            "activitypub": {
+                "description": "ActivityPub 🌐📢 ActivityPub is a decentralized social networking protocol that facilitates communication between different platforms."
+            },
+            "actix": {
+                "description": "Actix 🚀⚡🦀 Actix is a high-performance, Rust-based web framework optimized for speed and concurrency."
+            },
+            "adonis": {
+                "description": "Adonis JS 🚀 AdonisJS is a Node.js web framework with an expressive and elegant syntax."
+            },
+            "ae": {
+                "description": "AE 🔥 AE (Adobe After Effects) is a powerful software for creating motion graphics and visual effects."
+            }
+        };
+
+        function generateQuestions() {
+            for (let key in descriptionsData) {
+                if (descriptionsData.hasOwnProperty(key)) {
+                    let tool = descriptionsData[key];
+                    let incorrectAnswers = [];
+                    for (let otherKey in descriptionsData) {
+                        if (descriptionsData.hasOwnProperty(otherKey) && otherKey !== key) {
+                            incorrectAnswers.push(descriptionsData[otherKey].description);
+                        }
+                    }
+                    incorrectAnswers = incorrectAnswers.sort(() => Math.random() - 0.5).slice(0, 3);
+
+                    questions.push({
+                        question: `What is the description of ${key}?`,
+                        options: [tool.description, ...incorrectAnswers],
+                        correct: 1
+                    });
+                }
+            }
+        }
+
+        function loadQuestion() {
+            let questionData = questions[currentQuestionIndex];
+            document.getElementById("question").innerText = questionData.question;
+            let buttons = document.querySelectorAll(".answer-btn");
+            
+            questionData.options.forEach((option, index) => {
+                buttons[index].innerText = option;
+            });
+
+            document.getElementById("result").innerText = '';
+            document.getElementById("next-btn").style.display = 'none';
+        }
+
+        function checkAnswer(selected) {
+            let questionData = questions[currentQuestionIndex];
+            let resultText = selected === questionData.correct ? 'Correct!' : 'Wrong answer, try again!';
+            document.getElementById("result").innerText = resultText;
+            document.getElementById("next-btn").style.display = 'inline-block';
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                document.getElementById("result").innerText = 'You have completed the quiz!';
+                document.getElementById("next-btn").style.display = 'none';
+            }
+        }
+
+        game.addEventListener('click', () => {
+            gameContainer.innerHTML = `
+                <h2>Tech & Tools Quiz</h2>
+                <p id="question">Choose the correct description for the tool:</p>
+                <div id="answers">
+                    <button class="answer-btn" onclick="checkAnswer(1)">Answer 1</button>
+                    <button class="answer-btn" onclick="checkAnswer(2)">Answer 2</button>
+                    <button class="answer-btn" onclick="checkAnswer(3)">Answer 3</button>
+                    <button class="answer-btn" onclick="checkAnswer(4)">Answer 4</button>
+                </div>
+                <p id="result"></p>
+                <button id="next-btn" onclick="nextQuestion()" style="display: none;">Next Question</button>
+            `;
+            generateQuestions();
+            loadQuestion();
+        });
+    </script>
+</body>
 </html>
