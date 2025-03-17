@@ -1,0 +1,1866 @@
+{
+  "ableton": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Ableton 🎵🎚️🎶\nAbleton is a powerful digital audio workstation (DAW) for music production and live performances. It features real-time audio manipulation, MIDI sequencing, and an intuitive workflow. Popular among producers and DJs, it supports creative sound design and looping."
+  },
+  "activitypub": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "ActivityPub 🌐📢\nActivityPub is a decentralized social networking protocol that facilitates communication between different platforms. It enables users to interact across various federated services, creating a decentralized web of interconnected social media networks."
+  },
+  "actix": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Actix 🚀⚡🦀\nActix is a high-performance, Rust-based web framework optimized for speed and concurrency. It utilizes an actor model to handle asynchronous operations efficiently. With a small memory footprint, it's ideal for building fast web applications and APIs."
+  },
+  "adonis": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Adonis JS 🚀\nAdonisJS is a Node.js web framework with an expressive and elegant syntax. It provides a complete set of tools for building secure, scalable, and high-performance applications. It supports features like authentication, validation, and ORM."
+  },
+  "ae": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "AE 🔥\nAE (Adobe After Effects) is a powerful software for creating motion graphics and visual effects. It's widely used in the film and video industry for animation, compositing, and creating stunning visual effects."
+  },
+  "aiscript": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "AIScript 🤖💻\nAIScript is a scripting language designed for AI and machine learning applications. It integrates various machine learning models and algorithms, making it easier to develop AI-based systems for different use cases."
+  },
+  "alpinejs": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Alpine.js ⚡📱\nAlpine.js is a minimal framework for composing JavaScript behavior in HTML. It provides a reactive and declarative approach to adding interactive elements to a page, while keeping the code lightweight and simple."
+  },
+  "anaconda": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Anaconda 🐍📊\nAnaconda is a popular Python distribution used for data science, machine learning, and scientific computing. It simplifies package management and deployment, and comes with a wide range of pre-installed libraries for data analysis and visualization."
+  },
+  "androidstudio": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Android Studio 📱💻\nAndroid Studio is the official integrated development environment (IDE) for building Android applications. It provides robust tools for coding, debugging, and testing, as well as a visual editor for designing user interfaces."
+  },
+  "angular": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Angular 🅰️💻\nAngular is a platform and framework for building single-page applications. It provides tools and libraries for building dynamic web applications with a focus on performance, scalability, and modularity."
+  },
+  "ansible": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Ansible 🔧⚙️\nAnsible is an open-source automation tool used for configuration management, application deployment, and task automation. It simplifies IT processes and allows for the management of systems at scale."
+  },
+  "apollo": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Apollo 🌌💻\nApollo is a platform for building GraphQL APIs. It provides tools for creating and managing GraphQL data and offers features like real-time subscriptions and optimized performance for web applications."
+  },
+  "appwrite": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Appwrite 📱💻\nAppwrite is an open-source backend server that helps developers build secure and scalable applications. It provides APIs for authentication, database management, file storage, and other essential backend services."
+  },
+  "arch": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Arch Linux 🐧🖥️\nArch Linux is a lightweight and flexible Linux distribution that follows a rolling release model. It focuses on simplicity, minimalism, and customization, providing users full control over their system setup."
+  },
+  "arduino": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Arduino 🛠️💡\nArduino is an open-source electronics platform based on easy-to-use hardware and software. It's widely used for building interactive projects and prototyping electronic devices, including sensors, motors, and lights."
+  },
+  "astro": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Astro 🌌🚀\nAstro is a modern static site generator that allows developers to create fast and optimized websites. It uses a component-based architecture and enables building sites using multiple front-end frameworks like React and Vue."
+  },
+  "atom": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Atom 🖋️💻\nAtom is a hackable text editor for the 21st century. It is customizable, allowing users to add plugins and features, and is designed to be user-friendly for programming in various languages."
+  },
+  "au": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "AU 🖥️🎶\nAU (Audio Units) is a music software plugin format developed by Apple. It is used to integrate audio effects, virtual instruments, and sound processing tools into music production software on macOS."
+  },
+  "autocad": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "AutoCAD 🏗️📐\nAutoCAD is a computer-aided design (CAD) software used for drafting and designing 2D and 3D models. It's widely used in industries like architecture, engineering, and construction for creating precise drawings and plans."
+  },
+  "aws": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "AWS ☁️🔧\nAmazon Web Services (AWS) is a cloud computing platform that provides infrastructure services like computing power, storage, and networking. It offers scalable solutions for hosting applications, websites, and data management."
+  },
+  "azul": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Azul 🌍🖥️\nAzul is a global leader in cloud and enterprise-grade Java runtime solutions. It provides high-performance JVMs that optimize application performance and scalability for Java-based applications."
+  },
+  "azure": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Azure ☁️🔧\nMicrosoft Azure is a cloud computing platform that offers services like computing, storage, and databases. It provides tools for building, deploying, and managing applications and services through Microsoft-managed data centers."
+  },
+  "babel": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Babel 🔄💻\nBabel is a JavaScript compiler that converts modern JavaScript code into a version compatible with older browsers. It allows developers to use the latest JavaScript features without worrying about compatibility issues."
+  },
+  "bash": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Bash 🖥️💻\nBash (Bourne Again Shell) is a command-line interface and scripting language used in Unix-like operating systems. It's widely used for automating tasks and managing system processes through shell scripts."
+  },
+  "bevy": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Bevy 🎮🕹️\nBevy is a game engine built in Rust designed for high performance and ease of use. It allows developers to create 2D and 3D games with a focus on speed, scalability, and flexibility."
+  },
+  "bitbucket": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Bitbucket 🗃️💻\nBitbucket is a web-based platform for hosting and managing Git repositories. It provides tools for version control, collaboration, and continuous integration to help developers manage software projects."
+  },
+  "blender": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Blender 🎨🖥️\nBlender is an open-source 3D creation suite used for modeling, animation, rendering, and video editing. It supports a wide range of workflows and is widely used in the film and game industries."
+  },
+  "bootstrap": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Bootstrap 🌐💻\nBootstrap is a front-end framework that provides a collection of CSS and JavaScript tools for building responsive, mobile-first websites. It simplifies web development with pre-designed components and utilities."
+  },
+  "bsd": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "BSD 🖥️🖱️\nBSD (Berkeley Software Distribution) is a Unix-like operating system known for its stability and performance. It's used in server environments and provides a solid foundation for other operating systems, such as macOS."
+  },
+  "bun": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Bun 🍞💻\nBun is a fast JavaScript runtime that focuses on performance. It includes built-in tools for bundling, transpiling, and serving JavaScript applications, optimizing the development workflow."
+  },
+  "c": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "C 💻⚙️\nC is a high-performance, general-purpose programming language. It is widely used for system programming, developing operating systems, and embedded applications due to its low-level access to memory and efficient execution."
+  },
+  "cs": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "C# 🖥️💻\nC# is an object-oriented programming language developed by Microsoft. It's used for building web applications, games, and desktop software, particularly on the .NET framework."
+  },
+  "cpp": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "C++ 💻🔧\nC++ is an extension of the C programming language, designed for high-performance applications. It supports both object-oriented and procedural programming paradigms and is widely used in game development, system software, and embedded systems."
+  },
+  "crystal": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Crystal 🧬💻\nCrystal is a compiled, statically-typed programming language that aims for performance and simplicity. It offers a syntax similar to Ruby and is ideal for building high-performance applications with a focus on speed."
+  },
+  "cassandra": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Cassandra 💾📊\nApache Cassandra is an open-source NoSQL database designed for high availability and scalability. It is ideal for handling large volumes of data across multiple servers without a single point of failure."
+  },
+  "clion": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "CLion 🖥️💻\nCLion is a cross-platform integrated development environment (IDE) for C and C++ programming. It provides advanced coding tools like refactoring, debugging, and testing for developers working with these languages."
+  },
+  "clojure": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Clojure is a functional, dynamic, and concurrent programming language."
+  },
+  "cloudflare": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Cloudflare provides CDN, DDoS protection, and web optimization services."
+  },
+  "cmake": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "CMake is a build automation tool used to manage project builds in a platform-independent way."
+  },
+  "codepen": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "CodePen is an online code editor and social development environment for front-end designers and developers."
+  },
+  "coffeescript": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "CoffeeScript is a programming language that compiles into JavaScript."
+  },
+  "css": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "CSS is a style sheet language used for describing the presentation of a document written in HTML or XML."
+  },
+  "cypress": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Cypress is an end-to-end testing framework for web applications."
+  },
+  "d3": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "D3.js is a JavaScript library for producing dynamic, interactive data visualizations in web browsers."
+  },
+  "dart": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Dart is a client-optimized programming language for building fast apps across all devices."
+  },
+  "debian": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Debian is a free operating system (OS) composed primarily of free and open-source software."
+  },
+  "deno": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Deno is a secure runtime for JavaScript and TypeScript built with V8, Rust, and Tokio."
+  },
+  "devto": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "DEV.to is a platform for programmers to share and discuss software development ideas."
+  },
+  "discord": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Discord 🎮💬\nDiscord is a popular communication platform primarily used by gamers, but it's also widely used by communities of all kinds. It offers text, voice, and video communication, as well as screen sharing, and supports bots and integrations. Discord also allows users to create servers for group chats, organize events, and share media."
+  },
+  "bots": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Bots 🤖💬\nBots are automated programs that can perform specific tasks on platforms like Discord, Telegram, and others. These bots can be used for moderation, sending reminders, playing music, or interacting with users in various ways. They are widely used for automating processes and enhancing user experience."
+  },
+  "django": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design."
+  },
+  "docker": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Docker is a set of platform-as-a-service products that use OS-level virtualization to deliver software in packages called containers."
+  },
+  "dotnet": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": ".NET is a software framework developed by Microsoft for building a wide range of applications."
+  },
+  "dynamodb": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability."
+  },
+  "eclipse": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Eclipse is an integrated development environment (IDE) used for Java development and other programming languages."
+  },
+  "elasticsearch": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Elasticsearch is a distributed, RESTful search and analytics engine used for searching and analyzing large volumes of data."
+  },
+  "electron": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Electron is a framework for building cross-platform desktop applications with web technologies."
+  },
+  "elixir": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Elixir is a functional, concurrent programming language designed for creating scalable and maintainable applications."
+  },
+  "elysia": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Elysia is a fast and lightweight web framework for building asynchronous applications in Elixir."
+  },
+  "emacs": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Emacs is a highly customizable text editor used by developers for coding, writing, and editing text."
+  },
+  "ember": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Ember.js is an open-source JavaScript web framework used for building ambitious web applications."
+  },
+  "emotion": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Emotion is a CSS-in-JS library designed for writing styles in JavaScript."
+  },
+  "express": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications."
+  },
+  "fastapi": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "FastAPI is a modern, fast web framework for building APIs with Python 3.7+ based on standard Python type hints."
+  },
+  "fediverse": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Fediverse is a collection of decentralized, interconnected social media platforms."
+  },
+  "figma": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Figma is a cloud-based UI/UX design tool used for creating prototypes and collaborative design workflows."
+  },
+  "firebase": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Firebase is a platform developed by Google for creating mobile and web applications with tools for app development, analytics, and database management."
+  },
+  "flask": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Flask is a lightweight web framework for Python, used for building web applications with a simple and easy-to-extend architecture."
+  },
+  "flutter": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Flutter is a UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase."
+  },
+  "forth": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Forth is a stack-based, procedural, and extensible programming language used for embedded systems and control systems."
+  },
+  "fortran": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Fortran is a high-level programming language used for scientific and engineering computations."
+  },
+  "gamemakerstudio": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "GameMaker Studio is a game development environment used for creating 2D games with a drag-and-drop interface and scripting."
+  },
+  "gatsby": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Gatsby is a React-based framework for building static websites with a focus on speed and scalability."
+  },
+  "gcp": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Google Cloud Platform (GCP) is a suite of cloud computing services that runs on the same infrastructure that Google uses internally."
+  },
+  "git": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Git is a distributed version control system used to track changes in source code during software development."
+  },
+  "github": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "GitHub is a web-based platform for version control and collaborative software development using Git."
+  },
+  "githubactions": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "GitHub Actions is a CI/CD and automation platform for building, testing, and deploying software directly from GitHub repositories."
+  },
+  "gitlab": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "GitLab is a web-based DevOps lifecycle tool providing a Git repository manager and CI/CD pipeline functionalities."
+  },
+  "gmail": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Gmail is a free email service developed by Google, known for its user-friendly interface and integration with other Google services."
+  },
+  "gherkin": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Gherkin is a language for describing business behavior without detailing how that functionality is implemented."
+  },
+  "go": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Go is a statically typed, compiled programming language designed for simplicity and efficiency, commonly used for server-side applications."
+  },
+  "gradle": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Gradle is a build automation tool that is widely used for Java, Groovy, Kotlin, and Android projects."
+  },
+  "godot": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Godot is an open-source game engine used for developing both 2D and 3D games, known for its simplicity and flexibility."
+  },
+  "grafana": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Grafana is an open-source analytics and monitoring platform, widely used for visualizing time-series data from various sources."
+  },
+  "graphql": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "GraphQL is a query language for APIs, allowing clients to request only the data they need from a single endpoint."
+  },
+  "gtk": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "GTK is a multi-platform toolkit for creating graphical user interfaces, primarily used in Linux environments."
+  },
+  "gulp": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Gulp is a task runner used in web development to automate tasks such as minification, compilation, and file management."
+  },
+  "haskell": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Haskell is a functional programming language known for its strong type system and lazy evaluation."
+  },
+  "haxe": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Haxe is a high-level programming language used for cross-platform development, supporting multiple backends such as JavaScript, C++, and Java."
+  },
+  "haxeflixel": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "HaxeFlixel is an open-source 2D game development framework written in Haxe, suitable for building games quickly."
+  },
+  "heroku": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Heroku is a platform-as-a-service (PaaS) that enables developers to build, run, and scale applications in various programming languages."
+  },
+  "hibernate": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Hibernate is a Java framework used for mapping an object-oriented domain model to a relational database."
+  },
+  "html": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "HTML (HyperText Markup Language) is the standard language used to create and structure content on the web."
+  },
+  "htmx": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "HTMX is a JavaScript library used to create dynamic web pages by extending HTML with attributes that can trigger requests and update the DOM."
+  },
+  "idea": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "IntelliJ IDEA is an integrated development environment (IDE) for Java development, with support for web, mobile, and enterprise applications."
+  },
+  "ai": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "AI (Artificial Intelligence) is the simulation of human intelligence in machines that are programmed to think, learn, and adapt."
+  },
+  "instagram": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Instagram is a social media platform primarily used for sharing photos and videos, with features like stories, reels, and direct messaging."
+  },
+  "ipfs": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "IPFS (InterPlanetary File System) is a protocol and peer-to-peer network for storing and sharing files in a distributed file system."
+  },
+  "java": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Java is a widely used object-oriented programming language known for its portability across platforms, especially in large-scale enterprise applications."
+  },
+  "js": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "JavaScript is a versatile programming language primarily used for creating interactive web pages and web applications."
+  },
+  "jenkins": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Jenkins is an open-source automation server used for continuous integration and continuous delivery (CI/CD) of software."
+  },
+  "jest": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Jest is a JavaScript testing framework that provides a simple and fast way to test code, particularly React applications."
+  },
+  "jquery": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "jQuery is a fast, small, and feature-rich JavaScript library that simplifies HTML document traversal, event handling, and animation."
+  },
+  "kafka": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Kafka is a distributed streaming platform used for building real-time data pipelines and streaming applications."
+  },
+  "kali": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Kali Linux is a Debian-based Linux distribution used for penetration testing and security auditing."
+  },
+  "kotlin": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Kotlin is a statically typed programming language that runs on the Java Virtual Machine (JVM), known for its concise syntax and null-safety."
+  },
+  "ktor": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Ktor is a Kotlin-based framework for building asynchronous web applications and services."
+  },
+  "kubernetes": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Kubernetes is an open-source platform for automating the deployment, scaling, and management of containerized applications."
+  },
+  "laravel": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Laravel is a PHP web application framework known for its elegant syntax and robust features for building modern web applications."
+  },
+  "latex": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "LaTeX is a typesetting system commonly used for producing scientific and mathematical documents."
+  },
+  "less": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Less is a CSS preprocessor that extends CSS with variables, mixins, and functions to make the stylesheets more maintainable."
+  },
+  "linkedin": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "LinkedIn is a social media platform focused on professional networking, job searching, and career development."
+  },
+  "linux": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Linux is a family of open-source Unix-like operating systems based on the Linux kernel."
+  },
+  "lit": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Lit is a simple library for building fast, lightweight web components using JavaScript."
+  },
+  "lua": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Lua is a lightweight, high-level scripting language designed for embedded systems and extensibility."
+  },
+  "md": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Markdown (MD) is a lightweight markup language with plain-text formatting syntax used to create formatted text using a simple text editor."
+  },
+  "mastodon": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Mastodon is a decentralized, open-source social network that is part of the Fediverse."
+  },
+  "materialui": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Material-UI is a popular React UI framework that implements Google's Material Design for building user interfaces."
+  },
+  "matlab": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "MATLAB is a high-performance language and environment for numerical computing, visualization, and algorithm development."
+  },
+  "maven": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Apache Maven is a build automation tool used primarily for Java projects to manage dependencies and project configurations."
+  },
+  "mint": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Mint is a modern Lisp-based programming language designed for simplicity and ease of use."
+  },
+  "misskey": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Misskey is a decentralized social media platform focused on privacy, customizability, and flexibility."
+  },
+  "mongodb": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "MongoDB is a NoSQL database used for storing data in JSON-like formats with high scalability and flexibility."
+  },
+  "mysql": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "MySQL is an open-source relational database management system based on SQL."
+  },
+  "neovim": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Neovim is a text editor designed for efficiency, extensibility, and ease of use. It is a modern version of Vim with better support for plugins. 📝"
+  },
+  "nestjs": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "NestJS is a progressive Node.js framework for building efficient, reliable, and scalable server-side applications. ⚡"
+  },
+  "netlify": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Netlify is a cloud platform for deploying and hosting web applications and static websites with continuous deployment support. 🌐"
+  },
+  "nextjs": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Next.js is a React-based framework that enables server-side rendering, static site generation, and hybrid applications. 🚀"
+  },
+  "nginx": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Nginx is a high-performance web server and reverse proxy server used to serve static content and handle load balancing. 🌍"
+  },
+  "nim": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Nim is a statically typed programming language known for its expressive syntax, high performance, and metaprogramming capabilities. 🧑‍💻"
+  },
+  "nix": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Nix is a package manager that provides reproducible builds and reliable software environments across systems. 🛠️"
+  },
+  "nodejs": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Node.js is a JavaScript runtime built on Chrome's V8 engine, designed for building scalable and fast web applications. ⚙️"
+  },
+  "notion": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Notion is an all-in-one workspace for note-taking, project management, and collaboration. 📒"
+  },
+  "npm": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "NPM (Node Package Manager) is a package manager for JavaScript, used for managing dependencies and sharing code. 📦"
+  },
+  "nuxtjs": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Nuxt.js is a Vue.js framework for building server-side rendered applications and static websites. 🖥️"
+  },
+  "obsidian": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Obsidian is a knowledge base application that works on local files and helps with organizing notes and linking them together. 🗂️"
+  },
+  "ocaml": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "OCaml is a functional programming language with an emphasis on expressiveness and performance. 🔧"
+  },
+  "octave": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "GNU Octave is a high-level interpreted language primarily used for numerical computations and is often considered a free alternative to MATLAB. 📊"
+  },
+  "opencv": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "OpenCV is an open-source computer vision library used for real-time image and video processing. 🖼️"
+  },
+  "openshift": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "OpenShift is a Kubernetes-based container platform for deploying and managing containerized applications. 🏗️"
+  },
+  "openstack": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "OpenStack is an open-source cloud computing platform for building and managing public and private clouds. ☁️"
+  },
+  "p5js": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "p5.js is a JavaScript library for creative coding, focusing on making coding accessible for artists and designers. 🎨"
+  },
+  "perl": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Perl is a high-level programming language known for its flexibility and power in text processing and system administration tasks. 🐚"
+  },
+  "ps": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "PowerShell is a task automation framework and scripting language used for managing and automating Windows and Linux systems. ⚙️"
+  },
+  "php": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "PHP is a server-side scripting language widely used for web development and building dynamic websites. 🌐"
+  },
+  "phpstorm": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "PHPStorm is an integrated development environment (IDE) specifically designed for PHP development with support for web technologies. 💻"
+  },
+  "pinia": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Pinia is a state management library for Vue.js, offering a simple and powerful API for managing state in your applications. 🔄"
+  },
+  "pkl": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "PKL is a file format used for serializing objects in Python, commonly used for saving machine learning models. 🧑‍💻"
+  },
+  "plan9": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Plan 9 is an operating system developed by Bell Labs, designed to overcome the limitations of Unix. 🖥️"
+  },
+  "planetscale": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "PlanetScale is a scalable, serverless database platform built on top of Vitess for cloud-native applications. 🌍"
+  },
+  "pnpm": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "pnpm is a fast, disk space-efficient package manager for JavaScript, used to manage dependencies in Node.js projects. ⚙️"
+  },
+  "postgres": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "PostgreSQL is an open-source, object-relational database management system known for its extensibility and SQL compliance. 🗃️"
+  },
+  "postman": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Postman is a collaboration platform for API development, providing tools for testing and documenting APIs. 🔧"
+  },
+  "powershell": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "PowerShell is a task automation and configuration management framework designed for managing IT systems. 🔧"
+  },
+  "pr": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "PR (Pull Request) is a method of submitting contributions to a project, commonly used in platforms like GitHub, GitLab, and Bitbucket for code review and collaboration."
+  },
+  "prisma": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Prisma is a next-generation ORM for Node.js and TypeScript, making it easy to work with databases."
+  },
+  "processing": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Processing is a flexible software sketchbook and a language for learning how to code within the context of the visual arts."
+  },
+  "prometheus": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Prometheus is an open-source system monitoring and alerting toolkit designed for reliability and scalability."
+  },
+  "pug": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Pug is a high-performance template engine for Node.js that simplifies HTML writing with clean syntax."
+  },
+  "pycharm": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "PyCharm is an IDE used for Python development with advanced features like debugging, testing, and project management."
+  },
+  "py": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Python is a versatile, high-level programming language known for its readability and wide applications in web development, data science, and automation."
+  },
+  "pytorch": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "PyTorch is an open-source deep learning framework used for building machine learning models with dynamic computation graphs."
+  },
+  "qt": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Qt is a cross-platform application development framework used for building GUI applications with C++ and QML."
+  },
+  "r": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "R is a language and environment for statistical computing and graphics, widely used in data analysis and data visualization."
+  },
+  "rabbitmq": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "RabbitMQ is an open-source message broker used for managing and routing messages between systems in a distributed architecture."
+  },
+  "rails": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Ruby on Rails is a full-stack web application framework written in Ruby, known for its simplicity and productivity."
+  },
+  "raspberrypi": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Raspberry Pi is a small, affordable single-board computer used for various applications in electronics and programming."
+  },
+  "react": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "React is a JavaScript library for building user interfaces, particularly for single-page applications."
+  },
+  "reactivex": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "ReactiveX is a programming library for composing asynchronous and event-based programs using observable sequences."
+  },
+  "redhat": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Red Hat is a leading provider of open-source software solutions, particularly known for Red Hat Enterprise Linux."
+  },
+  "redis": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Redis is an in-memory data structure store used as a database, cache, and message broker."
+  },
+  "redux": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Redux is a predictable state container for JavaScript apps, commonly used with React for managing app state."
+  },
+  "regex": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Regular Expressions (regex) are sequences of characters used for pattern matching within strings."
+  },
+  "remix": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Remix is a full-stack framework for building modern web applications with fast navigation and optimized performance."
+  },
+  "replit": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Replit is an online coding platform that provides a collaborative environment for coding in various languages."
+  },
+  "rider": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Rider is a cross-platform IDE for .NET development, built by JetBrains, designed for developers working with C# and other .NET technologies."
+  },
+  "robloxstudio": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Roblox Studio is a game development environment for creating games on the Roblox platform."
+  },
+  "rocket": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Rocket is a fast web framework for Rust, designed for building modern web applications with ease."
+  },
+  "rollupjs": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Rollup.js is a JavaScript module bundler that compiles small pieces of code into a larger, more optimized bundle."
+  },
+  "ros": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Robot Operating System (ROS) is a flexible framework for writing robot software and controlling robotic systems."
+  },
+  "ruby": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Ruby is a dynamic, open-source programming language with a focus on simplicity and productivity."
+  },
+  "rust": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Rust is a systems programming language known for its safety, performance, and concurrency features."
+  },
+  "sass": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Sass is a CSS preprocessor that enhances CSS with features like variables, nested rules, and mixins."
+  },
+  "spring": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Spring is a powerful framework for building Java-based enterprise applications, especially for web development."
+  },
+  "sqlite": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "SQLite is a C-language library that implements a small, fast, self-contained, and full-featured SQL database engine."
+  },
+  "stackoverflow": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Stack Overflow is a Q&A website for programmers to share knowledge and find solutions to coding problems."
+  },
+  "styledcomponents": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Styled Components is a library for styling React applications using tagged template literals and CSS-in-JS.🎨"
+  },
+  "sublime": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Sublime Text is a sophisticated text editor for code, markup, and prose, known for its speed and user-friendly interface.📝"
+  },
+  "supabase": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Supabase is an open-source Firebase alternative that offers a real-time database, authentication, and storage.💾"
+  },
+  "scala": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Scala is a programming language that combines object-oriented and functional programming paradigms, running on the JVM.🧑‍💻"
+  },
+  "sklearn": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Scikit-learn (sklearn) is a Python library for machine learning that provides simple and efficient tools for data mining and data analysis.📊"
+  },
+  "selenium": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Selenium is a suite of tools for automating web browsers, commonly used for testing web applications.🧪"
+  },
+  "sentry": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Sentry is an open-source platform for error tracking and monitoring the performance of applications in real-time.⚠️"
+  },
+  "sequelize": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Sequelize is a promise-based Node.js ORM for SQL databases, offering a simple API for querying and manipulating data.🔄"
+  },
+  "sketchup": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "SketchUp is a 3D modeling software used for architectural design, interior design, and engineering projects.🏗️"
+  },
+  "solidity": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Solidity is a programming language for writing smart contracts on the Ethereum blockchain.⛓️"
+  },
+  "solidjs": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "SolidJS is a declarative JavaScript library for building user interfaces with fine-grained reactivity.⚛️"
+  },
+  "svelte": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Svelte is a compiler that converts declarative components into efficient imperative code for building UIs.🎮"
+  },
+  "svg": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Scalable Vector Graphics (SVG) is a markup language for describing two-dimensional vector graphics.🔲"
+  },
+  "swift": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Swift is a powerful, open-source programming language developed by Apple for building applications on iOS, macOS, watchOS, and tvOS.🍎"
+  },
+  "symfony": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Symfony is a PHP framework for building web applications with reusable PHP components.⚙️"
+  },
+  "tailwind": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Tailwind CSS is a utility-first CSS framework for rapidly building custom user interfaces.🧵"
+  },
+  "tauri": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Tauri is a framework for building native desktop applications using web technologies like HTML, CSS, and JavaScript.🖥️"
+  },
+  "tensorflow": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "TensorFlow is an open-source machine learning framework for building and training neural networks.🧠"
+  },
+  "terraform": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Terraform is an open-source infrastructure-as-code software tool used for provisioning and managing cloud infrastructure.🌍"
+  },
+  "threejs": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Three.js is a JavaScript library for rendering 3D graphics in the browser using WebGL.🌐"
+  },
+  "twitter": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Twitter is a social media platform for sharing short messages (tweets) and interacting with others online.🐦"
+  },
+  "ts": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "TypeScript is a statically typed superset of JavaScript that compiles to plain JavaScript, providing type safety and advanced features.🔤"
+  },
+  "ubuntu": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Ubuntu is a popular open-source Linux distribution known for its ease of use and support for developers.🐧"
+  },
+  "unity": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Unity is a cross-platform game engine used for creating 2D, 3D, AR, and VR games and applications.🎮"
+  },
+  "unreal": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Unreal Engine is a powerful game engine used for creating high-quality games and immersive experiences.🕹️"
+  },
+  "v": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "V is a simple, fast, and secure programming language that compiles to native machine code.⚡"
+  },
+  "vercel": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Vercel is a cloud platform for static sites and serverless functions, optimized for front-end developers.🚀"
+  },
+  "vim": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Vim is a highly configurable text editor used by developers for editing code, text, and more.⚙️"
+  },
+  "visualstudio": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Visual Studio is an integrated development environment (IDE) from Microsoft, supporting multiple programming languages.🖥️"
+  },
+  "vite": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Vite is a next-generation build tool for JavaScript that focuses on speed and optimized development experience.⚡"
+  },
+  "vitest": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Vitest is a fast unit testing framework built for modern web applications using Vite.🧪"
+  },
+  "vscode": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Visual Studio Code is a free, open-source code editor developed by Microsoft, known for its versatility and rich plugin ecosystem.📝"
+  },
+  "vscodium": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "VSCodium is a community-driven, open-source version of Visual Studio Code, free from proprietary telemetry.📓"
+  },
+  "vue": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Vue.js is a progressive JavaScript framework for building user interfaces, focusing on the view layer.🔄"
+  },
+  "vuetify": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Vuetify is a Material Design component library for Vue.js, offering rich UI elements and responsive layouts.🎨"
+  },
+  "wasm": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "WebAssembly (WASM) is a binary instruction format for executing code on web browsers at near-native speed.⚙️"
+  },
+  "webflow": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Webflow is a web design tool that enables the creation of responsive websites without writing code.🌐"
+  },
+  "webpack": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Webpack is a module bundler for JavaScript applications, optimizing resources and assets.⚙️"
+  },
+  "webstorm": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "WebStorm is an IDE for JavaScript, HTML, and CSS development, offering advanced features like debugging and refactoring.💻"
+  },
+  "windicss": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "WindiCSS is a utility-first CSS framework inspired by Tailwind CSS, focusing on performance and speed.🌬️"
+  },
+  "windows": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Windows is an operating system developed by Microsoft, widely used on personal computers and enterprise environments.🖥️"
+  },
+  "wordpress": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "WordPress is an open-source content management system (CMS) used for building websites and blogs.📝"
+  },
+  "workers": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Workers are serverless functions deployed on the edge, commonly used for cloud computing tasks.👨‍💻"
+  },
+  "xd": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Adobe XD is a vector-based design tool used for creating user interfaces, prototypes, and design systems.🖼️"
+  },
+  "yarn": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Yarn is a fast, reliable package manager for JavaScript, enabling easier package management in Node.js projects.🧶"
+  },
+  "yew": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Yew is a modern Rust framework for building multi-threaded frontend web applications with WebAssembly.🌲"
+  },
+  "zig": {
+      "checkboxes": [
+          true,
+          false,
+          false
+      ],
+      "description": "Zig is a programming language designed for optimal performance and safety with manual memory management.⚒️"
+  }
+}
