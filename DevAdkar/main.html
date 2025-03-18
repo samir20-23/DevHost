@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Islamic Adhkar & Dua Tracker – A Complete Spiritual Companion</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 id="headerTitle">تطبيق الأذكار والأدعية الإسلامية</h1>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle">🌙</button>
+      </div>
+    </header>
+    <div class="language-switch">
+      <button class="language-btn active" data-lang="ar">العربية</button>
+      <button class="language-btn" data-lang="en">English</button>
+    </div>
+    <div class="tabs">
+      <div class="tab active" data-tab="daily">الأذكار اليومية</div>
+      <div class="tab" data-tab="tasbih">السبحة</div>
+      <div class="tab" data-tab="stats">الإحصائيات</div>
+      <div class="tab" data-tab="settings">الإعدادات</div>
+    </div>
+    <!-- Daily Adhkar Tab -->
+    <div id="dailyTab" class="tab-content active">
+      <div class="progress-container">
+        <div class="progress-title">
+          <h3 id="progressTitle">تقدم الأذكار اليومية</h3>
+          <span id="progressPercent">0%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+      <!-- Manual check-off list -->
+      <div class="adhkar-list" id="adhkarList"></div>
+      <div id="customAdhkarSection">
+        <input type="text" id="customAdhkarInput" placeholder="أدخل الذكر المخصص">
+        <button id="addCustomAdhkar">أضف الذكر</button>
+      </div>
+      <!-- Auto Mode for Daily Adhkar -->
+      <div id="autoAdkarControls">
+        <!-- Select the dhikr you want to recite automatically (populated from JSON) -->
+        <select id="autoDhikrSelect"></select>
+        <!-- Enter time (in seconds) for each recitation cycle -->
+        <input type="number" id="autoTimeInput" placeholder="الوقت بالثواني" value="10">
+        <button id="startAutoAdkar">بدء التلاوة التلقائية</button>
+        <button id="stopAutoAdkar" style="display:none;">إيقاف التلاوة</button>
+        <div id="autoCountdownDisplay"></div>
+        <!-- Display auto recitations count -->
+        <div id="autoCounterDisplay">0</div>
+      </div>
+    </div>
+    <!-- Tasbih (السبحة) Tab -->
+    <div id="tasbihTab" class="tab-content">
+      <div class="tasbih-container">
+        <!-- Display current tasbih dhikr -->
+        <div id="currentTasbihDhikr">سبحان الله</div>
+        <div class="tasbih-display" id="tasbihCounter">0</div>
+        <div class="tasbih-btns">
+          <button class="tasbih-btn" id="tasbihIncrement">تسبيح</button>
+          <button class="tasbih-btn" id="tasbihReset">إعادة تعيين</button>
+        </div>
+        <!-- Tasbih presets list -->
+        <div class="tasbih-presets" id="tasbihPresets">
+          <div class="tasbih-preset" data-dhikr="سبحان الله">سبحان الله</div>
+          <div class="tasbih-preset" data-dhikr="الحمد لله">الحمد لله</div>
+          <div class="tasbih-preset" data-dhikr="الله أكبر">الله أكبر</div>
+          <div class="tasbih-preset" data-dhikr="لا إله إلا الله">لا إله إلا الله</div>
+          <div class="tasbih-preset" data-dhikr="أستغفر الله">أستغفر الله</div>
+        </div>
+      </div>
+    </div>
+    <!-- Stats Tab -->
+    <div id="statsTab" class="tab-content">
+      <div class="stats-container">
+        <div class="stat-card">
+          <h4 class="stat-label" id="completedLabel">أذكار مكتملة</h4>
+          <div class="stat-value" id="completedAdhkar">0</div>
+        </div>
+        <div class="stat-card">
+          <h4 class="stat-label" id="streakLabel">أيام متتالية</h4>
+          <div class="stat-value" id="streakDays">0</div>
+        </div>
+        <div class="stat-card">
+          <h4 class="stat-label" id="tasbihLabel">إجمالي التسبيح</h4>
+          <div class="stat-value" id="totalTasbih">0</div>
+        </div>
+        <div class="stat-card">
+          <h4 class="stat-label" id="completionRateLabel">معدل الإكمال</h4>
+          <div class="stat-value" id="completionRate">0%</div>
+        </div>
+      </div>
+      <div class="progress-container">
+        <h3 class="settings-title" id="calendarTitle">سجل الأذكار الشهري</h3>
+        <div class="calendar-header">
+          <div class="calendar-day">الأحد</div>
+          <div class="calendar-day">الإثنين</div>
+          <div class="calendar-day">الثلاثاء</div>
+          <div class="calendar-day">الأربعاء</div>
+          <div class="calendar-day">الخميس</div>
+          <div class="calendar-day">الجمعة</div>
+          <div class="calendar-day">السبت</div>
+        </div>
+        <div class="calendar" id="adhkarCalendar"></div>
+      </div>
+      <div id="contributionsGrid"></div>
+      <div id="dashboardSection">
+        <h3 id="hadithTitle">الأحاديث</h3>
+        <div id="hadithList"></div>
+        <h3 id="duaTitle">الأدعية</h3>
+        <div id="duaList"></div>
+      </div>
+      <div id="challengeSection">
+        <h3 id="challengeTitle">التحديات</h3>
+        <div id="challengeList"></div>
+      </div>
+    </div>
+    <!-- Settings Tab -->
+    <div id="settingsTab" class="tab-content">
+      <div class="settings-container">
+        <div class="settings-group">
+          <h3 class="settings-title" id="notificationTitle">الإشعارات</h3>
+          <div class="settings-option">
+            <label class="switch">
+              <input type="checkbox" id="morningNotification" checked>
+              <span class="slider"></span>
+            </label>
+            <span id="morningNotifText">تذكير بأذكار الصباح</span>
+          </div>
+          <div class="settings-option">
+            <label class="switch">
+              <input type="checkbox" id="eveningNotification" checked>
+              <span class="slider"></span>
+            </label>
+            <span id="eveningNotifText">تذكير بأذكار المساء</span>
+          </div>
+        </div>
+        <div class="settings-group">
+          <h3 class="settings-title" id="appearanceTitle">المظهر</h3>
+          <div class="settings-option">
+            <label class="switch">
+              <input type="checkbox" id="darkModeToggle">
+              <span class="slider"></span>
+            </label>
+            <span id="darkModeText">الوضع المظلم</span>
+          </div>
+          <div class="settings-option">
+            <label class="switch">
+              <input type="checkbox" id="showTranslation" checked>
+              <span class="slider"></span>
+            </label>
+            <span id="showTranslationText">عرض الترجمة</span>
+          </div>
+        </div>
+        <div class="settings-group">
+          <h3 class="settings-title" id="optionsTitle">الخيارات</h3>
+          <div class="settings-option">
+            <label class="switch">
+              <input type="checkbox" id="autoReset" checked>
+              <span class="slider"></span>
+            </label>
+            <span id="autoResetText">إعادة تعيين الأذكار تلقائيًا عند منتصف الليل</span>
+          </div>
+        </div>
+        <div class="btn-primary" id="resetDataBtn" style="margin-top: 20px;">إعادة تعيين جميع البيانات</div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-bar">
+    <a href="#" class="nav-item active" data-tab="daily">
+      <div class="nav-icon"><i class="ilov ilov-dikr"></i></div>
+      <span id="navDaily">الأذكار</span>
+    </a>
+    <a href="#" class="nav-item" data-tab="tasbih">
+      <div class="nav-icon"><i class="ilov ilov-tasbih"></i></div>
+      <span id="navTasbih">السبحة</span>
+    </a>
+    <a href="#" class="nav-item" data-tab="stats">
+      <div class="nav-icon"><i class="ilov ilov-stats"></i></div>
+      <span id="navStats">الإحصائيات</span>
+    </a>
+    <a href="#" class="nav-item" data-tab="settings">
+      <div class="nav-icon"><i class="ilov ilov-settings"></i></div>
+      <span id="navSettings">الإعدادات</span>
+    </a>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
