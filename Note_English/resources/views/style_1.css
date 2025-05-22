@@ -375,3 +375,27 @@ tbody tr:nth-child(even) {
 #wordtable{
   min-width: 195px;
 }
+/* game 1 */
+/* #wmGrid{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: red;
+}
+#elementWordCard , #elementransCard {
+display: flex;
+width: 100%;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+background-color: blue;
+padding: 12px;
+}
+#transtext , #wordtext{
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: rgb(143, 0, 183);
+border: 1px solid white;
+} */

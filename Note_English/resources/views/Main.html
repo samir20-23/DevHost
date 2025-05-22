@@ -50,9 +50,11 @@
                 </div>
 
                 <div class="flex items-center space-x-4">
-                    <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-700">
-                        <i class="fas fa-moon text-gray-300 hover:text-white"></i>
+                    <button id="themeToggle"
+                        style="padding:0.5rem; border-radius:9999px; background:none; border:none; cursor:pointer;">
+                        <i id="themeIcon" class="fas fa-moon" style="color:#CBD5E1; font-size:1.25rem;"></i>
                     </button>
+
 
                     <div class="relative">
                         <button onclick="toggleImportExportMenu()" class="p-2 rounded-full hover:bg-gray-700">
@@ -184,117 +186,128 @@
             <!-- gameL -->
             <div class="bg-gray-800 rounded-lg p-6 mb-6 animate__animated animate__fadeIn">
                 <h3 class="text-lg font-medium mb-4 text-white">Games & Challenges</h3>
-              
+
                 <!-- Navigation Buttons -->
                 <div class="flex flex-wrap gap-4 mb-6">
-                  <button onclick="showGame('wordMatch')" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
-                    Word Match
-                  </button>
-                  <button onclick="showGame('speedChallenge')" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition">
-                    Speed Challenge
-                  </button>
-                  <button onclick="showGame('memoryGame')" class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition">
-                    Memory Cards
-                  </button>
-                  <button onclick="showGame('dailyChallenge')" class="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition">
-                    Daily Challenge
-                  </button>
-                  <!-- New Challenges -->
-                  <button onclick="showGame('wordQuizChallenge')" class="px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition">
-                    Word Quiz
-                  </button>
-                  <button onclick="showGame('askTranslateChallenge')" class="px-4 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition">
-                    Ask Translate
-                  </button>
-                  <button onclick="showGame('efmQuestions')" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">
-                    EFM Questions
-                  </button>
+                    <button onclick="showGame('wordMatch')"
+                        class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
+                        Word Match
+                    </button>
+                    <button onclick="showGame('speedChallenge')"
+                        class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition">
+                        Speed Challenge
+                    </button>
+                    <button onclick="showGame('memoryGame')"
+                        class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition">
+                        Memory Cards
+                    </button>
+                    <button onclick="showGame('dailyChallenge')"
+                        class="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition">
+                        Daily Challenge
+                    </button>
+                    <!-- New Challenges -->
+                    <button onclick="showGame('wordQuizChallenge')"
+                        class="px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition">
+                        Word Quiz
+                    </button>
+                    <button onclick="showGame('askTranslateChallenge')"
+                        class="px-4 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition">
+                        Ask Translate
+                    </button>
+                    <button onclick="showGame('efmQuestions')"
+                        class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">
+                        EFM Questions
+                    </button>
                 </div>
-              
+
                 <!-- Game Containers -->
                 <div id="gameContainers">
-                  <!-- Word Match Game -->
-                  <div id="wordMatch" class="game-container hidden">
-                    <h3 class="text-xl font-bold mb-4 text-white">Match Words with Translations</h3>
-                    <div id="wordMatchContainer" class="grid grid-cols-2 gap-4" style="color: black;">
-                      <!-- Populated via JS -->
-                    </div>
-                    <div class="mt-4">
-                      <p class="text-white">Score: <span id="wordMatchScore">0</span></p>
-                      <p class="text-white">Time: <span id="wordMatchTimer">60</span>s</p>
-                    </div>
-                  </div>
-              
-                  <!-- Speed Challenge -->
-                  <div id="speedChallenge" class="game-container hidden">
-                    <h3 class="text-xl font-bold mb-4 text-white">Speed Translation Challenge</h3>
-                    <div class="text-center">
-                      <div id="challengeWord" class="text-3xl mb-4 text-white">Ready?</div>
-                      <input type="text" id="challengeInput" class="w-64 p-2 border rounded" placeholder="Type translation here">
-                      <div class="mt-4">
-                        <p class="text-white">Score: <span id="speedScore">0</span></p>
-                        <p class="text-white">Time: <span id="speedTimer">30</span>s</p>
-                      </div>
-                    </div>
-                  </div>
-              
-                  <!-- Memory Game -->
-                  <div id="memoryGame" class="game-container hidden">
-                    <h3 class="text-xl font-bold mb-4 text-white">Memory Cards</h3>
-                    <div id="memoryContainer" class="grid grid-cols-4 gap-4" style="color: black;">
-                      <!-- Populated via JS -->
-                    </div>
-                    <div class="mt-4">
-                      <p class="text-white">Matches Found: <span id="memoryScore">0</span></p>
-                      <p class="text-white">Moves: <span id="memoryMoves">0</span></p>
-                    </div>
-                  </div>
-              
-                  <!-- Daily Challenge -->
-                  <div id="dailyChallenge" class="game-container hidden">
-                    <h3 class="text-xl font-bold mb-4 text-white">Daily Challenge</h3>
-                    <div class="bg-white p-6 rounded-lg shadow" style="color: black;">
-                      <h4 class="text-lg font-semibold mb-2">Today's Challenges:</h4>
-                      <div id="dailyChallengeList" class="space-y-4" style="color: black;">
-                        <!-- Populated via JS -->
-                      </div>
-                      <div class="mt-4" style="color: black;">
-                        <p>Progress: <span id="challengeProgress">0</span>/5</p>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
-                          <div id="challengeProgressBar" class="bg-yellow-500 h-2.5 rounded-full" style="width: 0%"></div>
+                    <!-- Word Match Game -->
+                    <div id="wordMatch" class="game-container hidden">
+                        <h3 class="text-xl font-bold mb-4 text-white">Match Words with Translations</h3>
+                        <div id="wordMatchContainer" class="grid grid-cols-2 gap-4" style="color: black;">
+                            <!-- Populated via JS -->
                         </div>
-                      </div>
+                        <div class="mt-4">
+                            <p class="text-white">Score: <span id="wordMatchScore">0</span></p>
+                            <p class="text-white">Time: <span id="wordMatchTimer">60</span>s</p>
+                        </div>
                     </div>
-                  </div>
-              
-                  <!-- New: Word Quiz Challenge -->
-                  <div id="wordQuizChallenge" class="game-container hidden">
-                    <!-- Populated via JS -->
-                  </div>
-              
-                  <!-- New: Ask Translate Challenge -->
-                  <div id="askTranslateChallenge" class="game-container hidden">
-                    <!-- Populated via JS -->
-                  </div>
-              
-                  <!-- New: EFM Questions Challenge -->
-                  <div id="efmQuestions" class="game-container hidden">
-                    <!-- Populated via JS -->
-                  </div>
+
+                    <!-- Speed Challenge -->
+                    <div id="speedChallenge" class="game-container hidden">
+                        <h3 class="text-xl font-bold mb-4 text-white">Speed Translation Challenge</h3>
+                        <div class="text-center">
+                            <div id="challengeWord" class="text-3xl mb-4 text-white">Ready?</div>
+                            <input type="text" id="challengeInput" class="w-64 p-2 border rounded"
+                                placeholder="Type translation here">
+                            <div class="mt-4">
+                                <p class="text-white">Score: <span id="speedScore">0</span></p>
+                                <p class="text-white">Time: <span id="speedTimer">30</span>s</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Memory Game -->
+                    <div id="memoryGame" class="game-container hidden">
+                        <h3 class="text-xl font-bold mb-4 text-white">Memory Cards</h3>
+                        <div id="memoryContainer" class="grid grid-cols-4 gap-4" style="color: black;">
+                            <!-- Populated via JS -->
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-white">Matches Found: <span id="memoryScore">0</span></p>
+                            <p class="text-white">Moves: <span id="memoryMoves">0</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Daily Challenge -->
+                    <div id="dailyChallenge" class="game-container hidden">
+                        <h3 class="text-xl font-bold mb-4 text-white">Daily Challenge</h3>
+                        <div class="bg-white p-6 rounded-lg shadow" style="color: black;">
+                            <h4 class="text-lg font-semibold mb-2">Today's Challenges:</h4>
+                            <div id="dailyChallengeList" class="space-y-4" style="color: black;">
+                                <!-- Populated via JS -->
+                            </div>
+                            <div class="mt-4" style="color: black;">
+                                <p>Progress: <span id="challengeProgress">0</span>/5</p>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                                    <div id="challengeProgressBar" class="bg-yellow-500 h-2.5 rounded-full"
+                                        style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- New: Word Quiz Challenge -->
+                    <div id="wordQuizChallenge" class="game-container hidden">
+                        <!-- Populated via JS -->
+                    </div>
+
+                    <!-- New: Ask Translate Challenge -->
+                    <div id="askTranslateChallenge" class="game-container hidden">
+                        <!-- Populated via JS -->
+                    </div>
+
+                    <!-- New: EFM Questions Challenge -->
+                    <div id="efmQuestions" class="game-container hidden">
+                        <!-- Populated via JS -->
+                    </div>
                 </div>
-              
+
                 <!-- Results Modal -->
                 <div id="gameResultsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden">
-                  <div class="bg-white p-6 rounded-lg w-96 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    <h3 class="text-xl font-bold mb-4">Game Results</h3>
-                    <div id="gameResultsContent"></div>
-                    <button onclick="closeGameResults()" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
-                      Close
-                    </button>
-                  </div>
+                    <div
+                        class="bg-white p-6 rounded-lg w-96 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        <h3 class="text-xl font-bold mb-4">Game Results</h3>
+                        <div id="gameResultsContent"></div>
+                        <button onclick="closeGameResults()"
+                            class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
+                            Close
+                        </button>
+                    </div>
                 </div>
-              </div>
-              
+            </div>
+
             <!-- gameL -->
 
         </div>
